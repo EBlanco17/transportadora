@@ -15,7 +15,8 @@ const routes: Routes = [
   {path: 'pedido', component: PedidoComponent},
   {path: 'conductor', component: ConductorComponent},
   {path: 'camion', component: CamionComponent},
-  {path: 'editar', component: EditarComponent}
+  {path: 'editar', component: EditarComponent},
+  {path: '**', component: LoginComponent}
   
 ];
 
