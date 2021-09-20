@@ -10,6 +10,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { ConductorComponent } from './pages/conductor/conductor.component';
 import { CamionComponent } from './pages/camion/camion.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CamionComponent } from './pages/camion/camion.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MaterialModule
     
   ],
