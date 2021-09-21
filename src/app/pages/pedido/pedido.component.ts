@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table/public-api';
+import { Ciudades } from 'src/app/_model/Ciudades';
 import { Departamento } from 'src/app/_model/Departamento';
 import { DepartamentoService } from 'src/app/_service/departamento.service';
 
@@ -15,6 +17,14 @@ export class PedidoComponent implements OnInit {
   columnsToDisplay: string[] = this.displayedColumns.slice();
   list: Departamento[] = [];
   dataSourse=this.list;
+
+
+  
+  displayedColumns2: string[] = ['idCiudad', 'nombre'];
+  columnsToDisplay2: string[] = this.displayedColumns2.slice();
+  list22: Ciudades[] = [];
+  dataSourse2=this.list22;
+  
 
   constructor(private departamentoService: DepartamentoService) { }
 
@@ -39,8 +49,23 @@ export class PedidoComponent implements OnInit {
   }
 
 
-  public nuevaTabla(num: number):void{
+  public nuevaTabla(num: number){
     this.carga=true;
-    console.log(num);
+    //console.log(num);
+    this.departamentoService.listarCiudades(num).subscribe(data=>{
+      data.forEach(element => {
+         this.list22.push({idCiudad: element.idCiudad, nombre: element.nombre});
+      });
+      //console.log(data);
+      this.dataSourse2 = this.list22;
+
+      if (!this.dataSourse) {
+        alert('error al cargar');
+      }else{
+        this.carga=false;
+      }
+    });
+    this.dataSourse2 = [];
+    this.list22 = [];
   }
 }
