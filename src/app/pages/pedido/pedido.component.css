@@ -1,8 +1,20 @@
-/*botones*/
 section {
     display: flex;
   }
   table {
-    width: 100%;
     justify-content: center;
+    text-align: center;
+  }
+  .tablaDpt{
+   
+   float: left;
+  padding-left: 20%;
+   
+  }
+   .tablaMun{
+    padding-right: 30%;
+    float:right;
+   }
+   .mat-header-cell{
+    text-align:center;
   }
