@@ -28,8 +28,9 @@ export class CamionesComponent implements OnInit {
   });*/
 
   this.vehiculoService.listarPaginado(0,5).subscribe(data =>{
-    this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+       this.dataSource.paginator = this.paginator;
+      console.log(data);
+      
   })
   }
 

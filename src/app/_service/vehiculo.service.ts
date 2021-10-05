@@ -20,6 +20,7 @@ import { Vehiculo} from '../_model/Vehiculo';
       }
 
       public listarPaginado(size: number, page: number){
-        return this.http.get<Vehiculo[]>(`${this.url}/pageable?page=${page}&size=${size}/`);
+        //return this.http.get<Vehiculo[]>(`${this.url}/pageable?page=`+ page +`&size=`+size+`/`);
+        return this.http.get(`${this.url}/pageable/?page=0&size=3`);
       }
   }

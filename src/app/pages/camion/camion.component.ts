@@ -17,6 +17,11 @@ export class CamionComponent implements OnInit {
     this.vehiculoService.guardar(vehiculo).subscribe(data =>{
       console.log("Se registro vehiculo");
   });
+
+  this.vehiculoService.listarPaginado(0,3).subscribe(data =>{
+    console.log(data);
+      
+  })
   }
 
 }
