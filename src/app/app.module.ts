@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,7 @@ import { PedidoComponent } from './pages/pedido/pedido.component';
 import { ConductorComponent } from './pages/conductor/conductor.component';
 import { CamionComponent } from './pages/camion/camion.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CamionesComponent } from './pages/camion/camiones/camiones.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     PerfilComponent,
     PedidoComponent,
     ConductorComponent,
-    CamionComponent
+    CamionComponent,
+    CamionesComponent
   ],
   imports: [
     BrowserModule,

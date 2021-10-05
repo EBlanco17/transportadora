@@ -15,4 +15,11 @@ import { Vehiculo} from '../_model/Vehiculo';
     public guardar(vehiculo: Vehiculo){
         return this.http.post(`${this.url}/guardar`, vehiculo);
     }
+    public listar() {
+        return this.http.get<Vehiculo[]>(`${this.url}/listar`);
+      }
+
+      public listarPaginado(size: number, page: number){
+        return this.http.get<Vehiculo[]>(`${this.url}/pageable?page=${page}&size=${size}/`);
+      }
   }
