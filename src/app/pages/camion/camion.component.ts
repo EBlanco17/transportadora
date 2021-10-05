@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Vehiculo } from 'src/app/_model/Vehiculo';
+import { VehiculoService } from 'src/app/_service/vehiculo.service';
 @Component({
   selector: 'app-camion',
   templateUrl: './camion.component.html',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CamionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private vehiculoService: VehiculoService) { }
 
   ngOnInit(): void {
+
+    let vehiculo: Vehiculo = new Vehiculo();
+    
+    this.vehiculoService.guardar(vehiculo).subscribe(data =>{
+      console.log("Se registro vehiculo");
+  });
   }
 
 }

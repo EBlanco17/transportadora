@@ -9,15 +9,14 @@ import { Departamento } from '../_model/Departamento';
 })
 export class DepartamentoService {
 
-  url1:string=environment.HOST+'/departamentos';
-  url12:string=`${environment.HOST}/departamentos`;
+  url:string=`${environment.HOST}/departamentos`;
 
   constructor(private http: HttpClient) { }
 
   public listar(){
-    return this.http.get<Departamento[]>(`${this.url12}/listar`);
+    return this.http.get<Departamento[]>(`${this.url}/listar`);
   }
-  public listarCiudades(num: number){
-    return this.http.get<Ciudades[]>(`${this.url12}/ciudad/listarPorDepartamnto/${num}`);
+  public listarCiudades(idDpt: number){
+    return this.http.get<Ciudades[]>(`${this.url}/ciudad/listarPorDepartamnto/${idDpt}`);
   }
 }
