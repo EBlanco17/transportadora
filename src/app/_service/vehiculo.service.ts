@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 export interface VehiculoData {
+  paginator: any;
   content: Vehiculo[],
   pageable:{
     sort:{
@@ -51,7 +52,7 @@ export class VehiculoService{
     return this.http.get<Vehiculo[]>(`${this.url}/listar`);
   }
 
-  listarPaginado (size: number, page: number):Observable<VehiculoData>{
+  listarPaginado ( page: number,size: number):Observable<VehiculoData>{
     //return this.http.get(`${this.url}/pageable/?page=${page}&size=${size}`);
     let params = new HttpParams();
     params=params.append('page',String(page));

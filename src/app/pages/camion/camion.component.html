@@ -1,42 +1,44 @@
 <h1>Camiones con los que contamos</h1>
 <div *ngIf="dataSource">
     <table mat-table [dataSource]="dataSource.content" class="mat-elevation-z8">
-
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-      
-        <!-- Position Column -->
         <ng-container matColumnDef="idVehiculo">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let row"> {{row.idVehiculo}} </td>
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let row"> {{row.idVehiculo}} </td>
         </ng-container>
-      
-        <!-- Name Column -->
+
         <ng-container matColumnDef="placa">
-          <th mat-header-cell *matHeaderCellDef> Placa </th>
-          <td mat-cell *matCellDef="let row"> {{row.placa}} </td>
+            <th mat-header-cell *matHeaderCellDef> Placa </th>
+            <td mat-cell *matCellDef="let row"> {{row.placa}} </td>
         </ng-container>
-      
-        <!-- Weight Column -->
+
         <ng-container matColumnDef="modelo">
-          <th mat-header-cell *matHeaderCellDef> Modelo </th>
-          <td mat-cell *matCellDef="let row"> {{row.modelo}} </td>
+            <th mat-header-cell *matHeaderCellDef> Modelo </th>
+            <td mat-cell *matCellDef="let row"> {{row.modelo}} </td>
         </ng-container>
-      
-        <!-- Symbol Column -->
+
         <ng-container matColumnDef="marca">
-          <th mat-header-cell *matHeaderCellDef> Marca </th>
-          <td mat-cell *matCellDef="let row"> {{row.marca}} </td>
+            <th mat-header-cell *matHeaderCellDef> Marca </th>
+            <td mat-cell *matCellDef="let row"> {{row.marca}} </td>
         </ng-container>
+
         <ng-container matColumnDef="tipoVehiuclo">
             <th mat-header-cell *matHeaderCellDef> Tipo Vehiculo </th>
             <td mat-cell *matCellDef="let row"> {{row.tipoVehiuclo}} </td>
-          </ng-container>
-          <ng-container matColumnDef="capacidad">
+        </ng-container>
+
+        <ng-container matColumnDef="capacidad">
             <th mat-header-cell *matHeaderCellDef> Capacidad </th>
             <td mat-cell *matCellDef="let row"> {{row.capacidad}} </td>
-          </ng-container>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+    </table>
+    <mat-paginator style="width: 50%"
+        [length]="dataSource.totalElements" 
+        [pageSize]="dataSource.totalPages" 
+        [pageSizeOptions]="[10,15,20,25,30]"
+        (page)="pageEvent = $event; onPageChange($event)" 
+        aria-label="Select page">
+    </mat-paginator>
 </div>
