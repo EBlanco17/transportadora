@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
 import { Vehiculo } from 'src/app/_model/Vehiculo';
-import { VehiculoService } from 'src/app/_service/vehiculo.service';
+import { VehiculoData, VehiculoService } from 'src/app/_service/vehiculo.service';
 @Component({
   selector: 'app-camion',
   templateUrl: './camion.component.html',
@@ -8,20 +9,24 @@ import { VehiculoService } from 'src/app/_service/vehiculo.service';
 })
 export class CamionComponent implements OnInit {
 
+  dataSource!: VehiculoData;
+  displayedColumns: string[] = ['idVehiculo', 'placa', 'modelo','marca','tipoVehiuclo','capacidad'];
+
   constructor(private vehiculoService: VehiculoService) { }
 
   ngOnInit(): void {
 
-    let vehiculo: Vehiculo = new Vehiculo();
+    //let vehiculo: Vehiculo = new Vehiculo();
     
-    this.vehiculoService.guardar(vehiculo).subscribe(data =>{
+    /*this.vehiculoService.guardar(vehiculo).subscribe(data =>{
       console.log("Se registro vehiculo");
-  });
+    });*/
 
-  this.vehiculoService.listarPaginado(0,3).subscribe(data =>{
-    console.log(data);
-      
-  })
+    this.vehiculoService.listarPaginado(10,0).pipe(
+      tap(vehiculo=>console.log(vehiculo)),
+      map((v:VehiculoData)=>this.dataSource=v)
+    ).subscribe();
+
   }
 
 }
