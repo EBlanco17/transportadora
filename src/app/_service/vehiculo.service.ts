@@ -62,5 +62,9 @@ export class VehiculoService{
       catchError(err=>throwError(err))
     );
   }
+  public editar(vehiculo: Vehiculo){
+    return this.http.put(`${this.url}/editar`, vehiculo);
+  }
+ 
 }
 

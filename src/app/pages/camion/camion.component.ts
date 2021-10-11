@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component,AfterViewInit, OnInit, ViewChild } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { Vehiculo } from 'src/app/_model/Vehiculo';
 import { VehiculoData, VehiculoService } from 'src/app/_service/vehiculo.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
+import { MatSort, Sort } from '@angular/material/sort';
+import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-camion',
@@ -13,14 +15,15 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class CamionComponent implements OnInit {
 
   dataSource!: VehiculoData;
-  displayedColumns: string[] = ['idVehiculo', 'placa', 'modelo','marca','tipoVehiuclo','capacidad'];
-
+  displayedColumns: string[] = ['idVehiculo', 'placa', 'modelo','marca','tipoVehiuclo','capacidad','editar'];
+  ListaVehiculos= new MatTableDataSource<Vehiculo>([]);
   pageEvent!: PageEvent;
   pageSizeOptions!: number[];
  
   @ViewChild(MatPaginator, {static:true})paginator!:MatPaginator;
-
-  constructor(private vehiculoService: VehiculoService) { }
+  @ViewChild(MatSort,{static: true}) sort!: MatSort;
+  
+  constructor(private vehiculoService: VehiculoService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //let vehiculo: Vehiculo = new Vehiculo();
@@ -32,18 +35,22 @@ export class CamionComponent implements OnInit {
     this.vehiculoService.listarPaginado(0,10).pipe(
       tap(vehiculo=>console.log(vehiculo)),
       map((v:VehiculoData)=>this.dataSource=v)
-    ).subscribe();
-  }
+    ).subscribe(data=>{
+      this.ListaVehiculos = new MatTableDataSource(data.content);
+      this.ListaVehiculos.sort = this.sort;
+  });
+}
 
 
-  onPageChange(event:PageEvent){
-    let page=event.pageIndex-1;
-    let size=event.pageSize;
-    page=page+1;
-    this.vehiculoService.listarPaginado(page,size).pipe(
-      map((v:VehiculoData)=>this.dataSource=v)
-    ).subscribe();
-    console.log(page);
+  onPageChange(event:PageEvent):void{
+    let page = event.pageIndex;
+    let size = event.pageSize;
+
+    this.vehiculoService.listarPaginado(page, size).pipe(
+      map((inform: VehiculoData)=>this.dataSource=inform)).subscribe(data=>{
+        this.ListaVehiculos = new MatTableDataSource(data.content);
+        this.ListaVehiculos.sort = this.sort;
+      });
   }
 
 }

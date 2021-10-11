@@ -12,7 +12,10 @@ import { PedidoComponent } from './pages/pedido/pedido.component';
 import { ConductorComponent } from './pages/conductor/conductor.component';
 import { CamionComponent } from './pages/camion/camion.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CamionesComponent } from './pages/camion/camiones/camiones.component';
+import { EditarCamionComponent } from './pages/camion/editar-camion/editar-camion.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NotOkComponent } from './pages/not-ok/not-ok.component';
+import { RegistrarCamionComponent } from './pages/camion/registrar-camion/registrar-camion.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { CamionesComponent } from './pages/camion/camiones/camiones.component';
     PedidoComponent,
     ConductorComponent,
     CamionComponent,
-    CamionesComponent
+    EditarCamionComponent,
+    NotFoundComponent,
+    NotOkComponent,
+    RegistrarCamionComponent
   ],
   imports: [
     BrowserModule,
