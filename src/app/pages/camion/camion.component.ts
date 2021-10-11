@@ -29,17 +29,18 @@ export class CamionComponent implements OnInit {
       console.log("Se registro vehiculo");
     });*/
 
-    this.vehiculoService.listarPaginado(0,10).pipe(
+    this.vehiculoService.listarPaginado(0,5).pipe(
       tap(vehiculo=>console.log(vehiculo)),
       map((v:VehiculoData)=>this.dataSource=v)
-    ).subscribe();
+    ).subscribe(data=>{
+      this.dataSource.paginator=this.paginator;
+    });
   }
 
 
   onPageChange(event:PageEvent){
-    let page=event.pageIndex-1;
+    let page=event.pageIndex;
     let size=event.pageSize;
-    page=page+1;
     this.vehiculoService.listarPaginado(page,size).pipe(
       map((v:VehiculoData)=>this.dataSource=v)
     ).subscribe();
