@@ -18,6 +18,8 @@ import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { RegistrarCamionComponent } from './pages/camion/registrar-camion/registrar-camion.component';
 import { ErrorInterceptorService } from './_share/error-interceptor.service';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
+import { DepartamentoComponent } from './pages/departamento/departamento.component';
+import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
     NotFoundComponent,
     NotOkComponent,
     RegistrarCamionComponent,
-    NotAllowedComponent
+    NotAllowedComponent,
+    DepartamentoComponent,
+    CiudadComponent
   ],
   imports: [
     BrowserModule,

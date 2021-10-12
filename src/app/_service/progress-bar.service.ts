@@ -1,23 +1,12 @@
 import { Injectable } from '@angular/core';
-import { NgProgressRef } from 'ngx-progressbar';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProgressBarService {
-  progressRef!: NgProgressRef;
+  
+  progressBarReactiva = new Subject<boolean>();
   constructor() {}
-
   
-    startLoading() {
-      
-      this.progressRef.start();
-     
-    }
-  
-    completeLoading() {
-      
-      this.progressRef.complete();
-     
-    }}
 }

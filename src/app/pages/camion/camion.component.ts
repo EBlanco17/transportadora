@@ -6,6 +6,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 
 @Component({
   selector: 'app-camion',
@@ -23,20 +24,23 @@ export class CamionComponent implements OnInit {
   @ViewChild(MatPaginator, {static:true})paginator!:MatPaginator;
   @ViewChild(MatSort,{static: true}) sort!: MatSort;
   
-  constructor(private vehiculoService: VehiculoService, public route: ActivatedRoute) { }
+  constructor(private vehiculoService: VehiculoService, public route: ActivatedRoute,
+    private barraProgreso: ProgressBarService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     //let vehiculo: Vehiculo = new Vehiculo();
     
     /*this.vehiculoService.guardar(vehiculo).subscribe(data =>{
       console.log("Se registro vehiculo");
     });*/
-
+    this.barraProgreso.progressBarReactiva.next(false);
+    //await new Promise(f => setTimeout(f, 5000));
     this.vehiculoService.listarPaginado(0,5).pipe(
       tap(vehiculo=>console.log(vehiculo)),
       map((v:VehiculoData)=>this.dataSource=v)
     ).subscribe(data=>{
       this.dataSource.paginator=this.paginator;
+      this.barraProgreso.progressBarReactiva.next(true);
     });
   }
 

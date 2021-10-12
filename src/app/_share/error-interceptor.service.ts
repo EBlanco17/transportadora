@@ -5,14 +5,16 @@ import { environment } from 'src/environments/environment';
 import { tap, catchError, retry } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ProgressBarService } from '../_service/progress-bar.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorInterceptorService implements HttpInterceptor {
-
+  
   constructor(private snackBar: MatSnackBar,
-              private router: Router) { }
+              private router: Router,
+              private barraProgreso : ProgressBarService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -26,7 +28,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
         }*/
       }
     })).pipe(catchError((err) => {
-
+          this.barraProgreso.progressBarReactiva.next(true);
           console.log(err);
           if(err.error.status == 400) {
                 this.openSnackBar(err.error.message);

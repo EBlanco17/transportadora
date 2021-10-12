@@ -1,4 +1,7 @@
 <div class="example-container">
+  <div [hidden]="flagProgressBar">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
     <mat-toolbar color="primary" class="example-toolbar" > 
         <!-- http://143.244.150.210/movitapp-back/departamentos/listar-->
         <!-- http://143.244.150.210/movitapp-back/departamentos/ciudad/listarPorDepartamnto/#-->
@@ -63,9 +66,15 @@
             <span>Camiones</span>
           </button>
           <mat-divider></mat-divider>  
+
+          <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/departamento']" routerLinkActive="active">
+            <mat-icon>share_location</mat-icon>
+            <span>Departamentos</span>
+          </button>
+          <mat-divider></mat-divider> 
+
           <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/conductor']" routerLinkActive="active">
-            
-          <mat-icon>supervisor_account</mat-icon>
+            <mat-icon>supervisor_account</mat-icon>
             <span>Conductores</span>
           </button>
           <mat-divider></mat-divider>  
