@@ -45,9 +45,9 @@
     </table>
     <mat-paginator style="width: 50%"
         [length]="dataSource.totalElements" 
-        [pageSize]="10" 
         [pageSizeOptions]="[5,10,15,20]"
         (page)="pageEvent = $event; onPageChange($event)" 
+        showFirstLastButtons
         aria-label="Select page">
     </mat-paginator>
 </div>

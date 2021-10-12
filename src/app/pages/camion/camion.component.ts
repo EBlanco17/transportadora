@@ -32,25 +32,22 @@ export class CamionComponent implements OnInit {
       console.log("Se registro vehiculo");
     });*/
 
-    this.vehiculoService.listarPaginado(0,10).pipe(
+    this.vehiculoService.listarPaginado(0,5).pipe(
       tap(vehiculo=>console.log(vehiculo)),
       map((v:VehiculoData)=>this.dataSource=v)
     ).subscribe(data=>{
-      this.ListaVehiculos = new MatTableDataSource(data.content);
-      this.ListaVehiculos.sort = this.sort;
-  });
-}
+      this.dataSource.paginator=this.paginator;
+    });
+  }
 
 
-  onPageChange(event:PageEvent):void{
-    let page = event.pageIndex;
-    let size = event.pageSize;
-
-    this.vehiculoService.listarPaginado(page, size).pipe(
-      map((inform: VehiculoData)=>this.dataSource=inform)).subscribe(data=>{
-        this.ListaVehiculos = new MatTableDataSource(data.content);
-        this.ListaVehiculos.sort = this.sort;
-      });
+  onPageChange(event:PageEvent){
+    let page=event.pageIndex;
+    let size=event.pageSize;
+    this.vehiculoService.listarPaginado(page,size).pipe(
+      map((v:VehiculoData)=>this.dataSource=v)
+    ).subscribe();
+    console.log(page);
   }
 
 }
