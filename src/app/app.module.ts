@@ -17,6 +17,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { RegistrarCamionComponent } from './pages/camion/registrar-camion/registrar-camion.component';
 import { ErrorInterceptorService } from './_share/error-interceptor.service';
+import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { ErrorInterceptorService } from './_share/error-interceptor.service';
     EditarCamionComponent,
     NotFoundComponent,
     NotOkComponent,
-    RegistrarCamionComponent
+    RegistrarCamionComponent,
+    NotAllowedComponent
   ],
   imports: [
     BrowserModule,
