@@ -1,0 +1,48 @@
+<div class="example-container">
+    <mat-form-field hintLabel="Maximo 7 caracteres" appearance="fill">
+      <mat-label>Ingrese la placa</mat-label>
+      <input matInput #input maxlength="7" placeholder="ABC-123">
+      <mat-hint align="end">{{input.value?.length || 0}}/7</mat-hint>
+    </mat-form-field>
+  <br>
+  
+  <mat-form-field hintLabel="Maximo 4 caracteres" appearance="fill">
+    <mat-label>Ingrese Modelo</mat-label>
+    <input matInput #input2 maxlength="4" placeholder="YYYY">
+    <mat-hint align="end">{{input2.value?.length || 0}}/4</mat-hint>
+  </mat-form-field>
+  <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione</mat-label>
+      <mat-select>
+        <mat-option value="Alfa Romeo">ALFA ROMERO</mat-option>
+        <mat-option value="Audi">AUDI</mat-option>
+        <mat-option value="BMW">BMW</mat-option>
+        <mat-option value="Chevrolet">CHEVROLET</mat-option>
+        <mat-option value="Ferrari">FERRARI</mat-option>
+        <mat-option value="Mazda">MAZDA</mat-option>
+        <mat-option value="Merdedes">MERCEDES</mat-option>
+        <mat-option value="Peugeot">PEUGEOT</mat-option>
+        <mat-option value="Porche">PORSCHE</mat-option>
+        <mat-option value="Reanult">RENAULT</mat-option>
+        <mat-option value="Toyota">TOYOTA</mat-option>
+      </mat-select>
+      <mat-hint align="end">Marca de camiones</mat-hint>
+    </mat-form-field>
+
+    <div>
+        <label>Seleccione el tipo de vehiculo: </label>
+        <mat-radio-group aria-label="Seleccione">
+            <mat-radio-button value="Camioneta">CAMIONETA</mat-radio-button>
+            <mat-radio-button value="Campero">CAMPERO</mat-radio-button>
+            <mat-radio-button value="Carro">CARRO</mat-radio-button>
+            <mat-radio-button value="Furgon">FURGÓN</mat-radio-button>
+          </mat-radio-group>
+      </div>
+<br>
+      <mat-form-field hintLabel="Maximo 5 digitos" appearance="fill">
+        <mat-label>Ingrese Capacidad en Kg</mat-label>
+        <input matInput #input3 maxlength="5" placeholder="34000">
+        <mat-hint align="end">{{input3.value?.length || 0}}/5</mat-hint>
+      </mat-form-field>
+  </div>

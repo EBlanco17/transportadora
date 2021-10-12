@@ -1,4 +1,7 @@
 <div [hidden]="route.children.length !== 0">
+    <button mat-raised-button color="accent" style="float: left; left: 150px; top: 10px; width: 150px;" [routerLink]="['/camion/registrar-camion']" >
+        <mat-icon>plus_one</mat-icon>
+    </button>
     <div fxLayout fxLayoutAlign="center center">
         <mat-form-field fxFlex="40%">
             <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar">
