@@ -11,6 +11,7 @@ import { RegistrarCamionComponent } from './pages/camion/registrar-camion/regist
 import { EditarCamionComponent } from './pages/camion/editar-camion/editar-camion.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotOkComponent } from './pages/not-ok/not-ok.component';
+import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   ]},
   {path: 'editar', component: EditarComponent},
   {path: 'error', component: NotOkComponent},
+  {path: 'notAllowed', component: NotAllowedComponent},
   {path: '**', component: NotFoundComponent}
   
 ];
