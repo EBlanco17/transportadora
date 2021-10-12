@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Departamento } from 'src/app/_model/Departamento';
@@ -16,7 +17,7 @@ export class DepartamentoComponent implements OnInit {
   dataSource = new MatTableDataSource<Departamento>();
 
   @ViewChild("DepartmentPaginator") paginator!: MatPaginator;
-
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(private departamentoService: DepartamentoService,
               public route: ActivatedRoute) { }
 
@@ -25,6 +26,7 @@ export class DepartamentoComponent implements OnInit {
     this.departamentoService.listar().subscribe(data =>{
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     });
 }
 filtrar(event: Event) {

@@ -1,18 +1,20 @@
 <div class="example-container">
-    <mat-form-field hintLabel="Maximo 7 caracteres" appearance="fill">
+    <h1>Nuevo Registro</h1>
+    <form action="">
+    <mat-form-field hintLabel="Maximo 7 caracteres" appearance="outline">
       <mat-label>Ingrese la placa</mat-label>
       <input matInput #input maxlength="7" placeholder="ABC-123">
       <mat-hint align="end">{{input.value?.length || 0}}/7</mat-hint>
     </mat-form-field>
   <br>
   
-  <mat-form-field hintLabel="Maximo 4 caracteres" appearance="fill">
+  <mat-form-field hintLabel="Maximo 4 caracteres" appearance="outline">
     <mat-label>Ingrese Modelo</mat-label>
     <input matInput #input2 maxlength="4" placeholder="YYYY">
     <mat-hint align="end">{{input2.value?.length || 0}}/4</mat-hint>
   </mat-form-field>
   <br>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Seleccione</mat-label>
       <mat-select>
         <mat-option value="Alfa Romeo">ALFA ROMERO</mat-option>
@@ -31,7 +33,7 @@
     </mat-form-field>
 
     <div>
-        <label>Seleccione el tipo de vehiculo: </label>
+        <label>Seleccione el tipo de vehiculo: </label><br>
         <mat-radio-group aria-label="Seleccione">
             <mat-radio-button value="Camioneta">CAMIONETA</mat-radio-button>
             <mat-radio-button value="Campero">CAMPERO</mat-radio-button>
@@ -40,9 +42,12 @@
           </mat-radio-group>
       </div>
 <br>
-      <mat-form-field hintLabel="Maximo 5 digitos" appearance="fill">
+      <mat-form-field hintLabel="Maximo 5 digitos" appearance="outline">
         <mat-label>Ingrese Capacidad en Kg</mat-label>
         <input matInput #input3 maxlength="5" placeholder="34000">
         <mat-hint align="end">{{input3.value?.length || 0}}/5</mat-hint>
       </mat-form-field>
+<br>
+      <button mat-raised-button color="accent">Registrar</button>
+    </form>
   </div>
