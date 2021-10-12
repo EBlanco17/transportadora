@@ -1,6 +1,9 @@
-
-<div *ngIf="dataSource" [hidden]="route.children.length !==0">
-    <h1>Camiones con los que contamos</h1>
+<div [hidden]="route.children.length !== 0">
+    <div fxLayout fxLayoutAlign="center center">
+        <mat-form-field fxFlex="40%">
+            <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar">
+        </mat-form-field>
+    </div>
     <table mat-table [dataSource]="dataSource.content" class="mat-elevation-z8" matSort >
         <ng-container matColumnDef="idVehiculo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
@@ -43,7 +46,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator style="width: 50%"
+    <mat-paginator 
         [length]="dataSource.totalElements" 
         [pageSizeOptions]="[5,10,15,20]"
         (page)="pageEvent = $event; onPageChange($event)" 

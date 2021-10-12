@@ -27,7 +27,7 @@ export class CamionComponent implements OnInit {
   constructor(private vehiculoService: VehiculoService, public route: ActivatedRoute,
     private barraProgreso: ProgressBarService) { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit() {
     //let vehiculo: Vehiculo = new Vehiculo();
     
     /*this.vehiculoService.guardar(vehiculo).subscribe(data =>{
@@ -40,10 +40,14 @@ export class CamionComponent implements OnInit {
       map((v:VehiculoData)=>this.dataSource=v)
     ).subscribe(data=>{
       this.dataSource.paginator=this.paginator;
+      this.ListaVehiculos.sort = this.sort;
       this.barraProgreso.progressBarReactiva.next(true);
     });
   }
-
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.ListaVehiculos.filter = filtro.trim().toLowerCase();
+  } 
 
   onPageChange(event:PageEvent){
     let page=event.pageIndex;

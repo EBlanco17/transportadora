@@ -1,4 +1,9 @@
 <div [hidden]="route.children.length !== 0">
+    <div fxLayout fxLayoutAlign="center center">
+        <mat-form-field fxFlex="40%">
+            <input matInput type="text" (keyup)="filtrar($event)" placeholder="Filter">
+        </mat-form-field>
+    </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
@@ -25,6 +30,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" #DepartmentPaginator></mat-paginator>
-</div>
-<router-outlet></router-outlet>
+    <mat-paginator [pageSize]="5" 
+    [pageSizeOptions]="[5, 10, 25, 100]" 
+    showFirstLastButtons
+    #DepartmentPaginator></mat-paginator>
+    </div>
+   <router-outlet></router-outlet>

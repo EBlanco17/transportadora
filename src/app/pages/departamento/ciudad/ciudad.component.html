@@ -1,4 +1,9 @@
-<div>
+<div [hidden]="route.children.length !== 0">
+        <div fxLayout fxLayoutAlign="center center">
+            <mat-form-field fxFlex="40%">
+                <input matInput type="text" (keyup)="filtrar($event)" placeholder="Filter">
+            </mat-form-field>
+        </div>
 <table mat-table [dataSource]="dataSourceCiudad" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
@@ -21,7 +26,10 @@
     <tr mat-row *matRowDef="let row; columns: displayedCityColumns;"></tr>
 </table>
 
-<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" #cityPaginator></mat-paginator>
+<mat-paginator [pageSize]="5" 
+[pageSizeOptions]="[5, 10, 25, 100]" 
+showFirstLastButtons
+#cityPaginator></mat-paginator>
 
 <button mat-fab color="accent" style="float: center;" [routerLink]="['/departamento']" >
     <mat-icon>compare_arrows</mat-icon>

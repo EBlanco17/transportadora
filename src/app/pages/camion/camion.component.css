@@ -1,7 +1,11 @@
 table {
-    width: 50%;
+    width: 100%;
     text-align: center;
+    align-content: center;
 }
 .mat-form-field {
     margin-right: 12px;
   }
+  th.mat-header-cell {
+    text-align: center;
+}

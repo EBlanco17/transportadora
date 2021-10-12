@@ -3,3 +3,6 @@ table{
     justify-content: center;
     text-align: center;
 }
+th.mat-header-cell {
+    text-align: center;
+}

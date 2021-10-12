@@ -34,5 +34,8 @@ export class CiudadComponent implements OnInit {
     });
 
   }
-
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSourceCiudad.filter = filtro.trim().toLowerCase();
+  } 
 }
