@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component,AfterViewInit, OnInit, ViewChild } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { Vehiculo } from 'src/app/_model/Vehiculo';
 import { VehiculoData, VehiculoService } from 'src/app/_service/vehiculo.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
+import { MatSort, Sort } from '@angular/material/sort';
+import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-camion',
@@ -13,14 +15,15 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class CamionComponent implements OnInit {
 
   dataSource!: VehiculoData;
-  displayedColumns: string[] = ['idVehiculo', 'placa', 'modelo','marca','tipoVehiuclo','capacidad'];
-
+  displayedColumns: string[] = ['idVehiculo', 'placa', 'modelo','marca','tipoVehiuclo','capacidad','editar'];
+  ListaVehiculos= new MatTableDataSource<Vehiculo>([]);
   pageEvent!: PageEvent;
   pageSizeOptions!: number[];
  
   @ViewChild(MatPaginator, {static:true})paginator!:MatPaginator;
-
-  constructor(private vehiculoService: VehiculoService) { }
+  @ViewChild(MatSort,{static: true}) sort!: MatSort;
+  
+  constructor(private vehiculoService: VehiculoService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //let vehiculo: Vehiculo = new Vehiculo();
