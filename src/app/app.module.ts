@@ -11,12 +11,12 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { ConductorComponent } from './pages/conductor/conductor.component';
 import { CamionComponent } from './pages/camion/camion.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EditarCamionComponent } from './pages/camion/editar-camion/editar-camion.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { RegistrarCamionComponent } from './pages/camion/registrar-camion/registrar-camion.component';
-
+import { ErrorInterceptorService } from './_share/error-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,13 @@ import { RegistrarCamionComponent } from './pages/camion/registrar-camion/regist
     MaterialModule
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide:  HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
+      multi:    true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
