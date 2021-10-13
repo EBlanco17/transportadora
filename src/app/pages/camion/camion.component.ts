@@ -28,11 +28,7 @@ export class CamionComponent implements OnInit {
     private barraProgreso: ProgressBarService) { }
 
   ngOnInit() {
-    //let vehiculo: Vehiculo = new Vehiculo();
     
-    /*this.vehiculoService.guardar(vehiculo).subscribe(data =>{
-      console.log("Se registro vehiculo");
-    });*/
     this.barraProgreso.progressBarReactiva.next(false);
     //await new Promise(f => setTimeout(f, 5000));
     this.vehiculoService.listarPaginado(0,5).pipe(
@@ -40,9 +36,12 @@ export class CamionComponent implements OnInit {
       map((v:VehiculoData)=>this.dataSource=v)
     ).subscribe(data=>{
       this.dataSource.paginator=this.paginator;
-      this.ListaVehiculos.sort = this.sort;
+
       this.barraProgreso.progressBarReactiva.next(true);
+      this.ListaVehiculos=new MatTableDataSource(data.content);
+      this.ListaVehiculos.sort = this.sort;
     });
+
   }
   filtrar(event: Event) {
     const filtro = (event.target as HTMLInputElement).value;
@@ -59,3 +58,15 @@ export class CamionComponent implements OnInit {
   }
 
 }
+/*
+@ViewChild(MatSort) sort: MatSort;
+ngOnInit(): void{
+  this.vehicleList.sort = this.sort;
+}
+public onPaginateChange(even: PageEvent){
+  this.vehicleList.sort = this.sort;
+}
+public doFilter = (value: string) => {
+    this.vehicleList.filter = value.trim().toLocaleLowerCase();
+  }
+*/ 

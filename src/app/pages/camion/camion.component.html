@@ -7,7 +7,7 @@
             <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar">
         </mat-form-field>
     </div>
-    <table mat-table [dataSource]="dataSource.content" class="mat-elevation-z8" matSort >
+    <table mat-table [dataSource]="ListaVehiculos" class="mat-elevation-z8" matSort >
         <ng-container matColumnDef="idVehiculo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
             <td mat-cell *matCellDef="let row"> {{row.idVehiculo}} </td>
