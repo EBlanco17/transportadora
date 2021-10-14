@@ -48,8 +48,8 @@ export class VehiculoService{
   public guardar(vehiculo: Vehiculo){
     return this.http.post(`${this.url}/guardar`, vehiculo);
   }
-  public listar() {
-    return this.http.get<Vehiculo[]>(`${this.url}/listar`);
+  public listar(id : number) {
+    return this.http.get(`${this.url}/listar/`+ id);
   }
 
   listarPaginado ( page: number,size: number):Observable<VehiculoData>{
