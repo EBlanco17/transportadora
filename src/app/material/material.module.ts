@@ -37,6 +37,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatOptionModule,
     MatSelectModule,
     MatRadioModule, 
+    MatSortModule
      
   ],exports: [
     MatTableModule,
@@ -55,6 +56,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatOptionModule,
     MatSelectModule,
     MatRadioModule,
+    MatSortModule
   ]})
 
     export class MaterialModule {}
