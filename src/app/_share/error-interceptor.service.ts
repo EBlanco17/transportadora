@@ -35,12 +35,12 @@ export class ErrorInterceptorService implements HttpInterceptor {
           } else if(err.error.status == 404) {
                 this.openSnackBar(err.error.message);
           } else if(err.error.status == 405) {
-                this.router.navigate(['/notAllowed']);
+                this.router.navigate(['notAllowed']);
                 this.openSnackBar(err.error.message);
           } else if(err.error.status == 415) {
                 this.openSnackBar(err.error.message);
           } else  if(err.error.status == 500) {
-                this.router.navigate(['/error']);
+                this.router.navigate(['error']);
           }
           return EMPTY;
     }));
