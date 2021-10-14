@@ -1,94 +1,149 @@
-<div class="example-container">
-<h2 class="center">Registrar vehículo</h2>
-<div>
-    <form [formGroup]="form" (ngSubmit)="nuevoVehiculo($event)">
-        <mat-form-field appearance="outline">
-            <mat-label>Placa</mat-label>
-            <input #input matInput type="text" placeholder="abc-123" formControlName="placa" maxlength="7">
-            <mat-hint align="end">{{input.value?.length || 0}}/7</mat-hint>
-        </mat-form-field>
-        <div *ngIf="form.get('placa')?.errors && form.get('placa')?.touched">
-            <p *ngIf="form.get('placa')?.hasError('maxlength') || form.get('placa')?.hasError('minlength')">
-                Placa inválida. Ej: abc-123
-            </p>
-            <p *ngIf="form.get('placa')?.hasError('required')">
-                Es un campo requerido
-            </p>
-        </div>
-        <br> 
-        <mat-form-field appearance="outline">
-          <mat-label>Marca de vehículo</mat-label>
-          <mat-select [(value)]="selectedMarca" formControlName="marca">
-            <mat-option value="Alfa Romeo">ALFA ROMERO</mat-option>
-            <mat-option value="Audi">AUDI</mat-option>
-            <mat-option value="BMW">BMW</mat-option>
-            <mat-option value="Chevrolet">CHEVROLET</mat-option>
-            <mat-option value="Ferrari">FERRARI</mat-option>
-            <mat-option value="Mazda">MAZDA</mat-option>
-            <mat-option value="Merdedes">MERCEDES</mat-option>
-            <mat-option value="Peugeot">PEUGEOT</mat-option>
-            <mat-option value="Porche">PORSCHE</mat-option>
-            <mat-option value="Reanult">RENAULT</mat-option>
-            <mat-option value="Toyota">TOYOTA</mat-option>
-          </mat-select>
-          
+<h1>Nuevo Registro</h1>
+<div >
+    <!-- <form [formGroup]="form"(ngSubmit)="insertVehiculo($event)">   
+      <mat-form-field appearance="fill">
+        <mat-label>Ingrese la placa</mat-label>
+        <input matInput tipe="text" placeholder="ABC-123" formControlName="placa">
       </mat-form-field>
-        <div *ngIf="form.get('marca')?.errors && form.get('marca')?.touched">
-            <p *ngIf="form.get('marca')?.hasError('required')">
-                Es un campo requerido
-            </p>
+      
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Ingrese la modelo</mat-label>
+        <input matInput tipe="text" placeholder="ABC-123" formControlName="modelo">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Marca</mat-label>
+        <mat-select [(value)]="marca" formControlName="marca">
+          <mat-option value="Alfa Romeo">ALFA ROMERO</mat-option>
+          <mat-option value="Audi">AUDI</mat-option>
+          <mat-option value="BMW">BMW</mat-option>
+          <mat-option value="Chevrolet">CHEVROLET</mat-option>
+          <mat-option value="Ferrari">FERRARI</mat-option>
+          <mat-option value="Mazda">MAZDA</mat-option>
+          <mat-option value="Merdedes">MERCEDES</mat-option>
+          <mat-option value="Peugeot">PEUGEOT</mat-option>
+          <mat-option value="Porche">PORSCHE</mat-option>
+          <mat-option value="Reanult">RENAULT</mat-option>
+          <mat-option value="Toyota">TOYOTA</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de vehiculo</mat-label>
+        <mat-select [(value)]="tipo" formControlName="tipo">
+          <mat-option value="Camioneta">CAMIONETA</mat-option>
+          <mat-option value="Campero">CAMPERO</mat-option>
+          <mat-option value="Carro">CARRO</mat-option>
+          <mat-option value="Furgon">FURGÓN</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Ingrese la capacidad en Kg</mat-label>
+        <input matInput tipe="text" placeholder="ABC-123" formControlName="capacidad">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="accent">Registrar</button> 
+    </form> -->
+  <form [formGroup]="form"(ngSubmit)="insertVehiculo($event)">
+     <mat-form-field hintLabel="Maximo 7 caracteres" appearance="outline">
+        <mat-label>Ingrese la placa</mat-label>
+        <input matInput #input maxlength="7" placeholder="ABC-123">
+        <mat-hint align="end">{{input.value?.length || 0}}/7</mat-hint>
+      </mat-form-field>
+    <br>
+    
+    <mat-form-field hintLabel="Maximo 4 caracteres" appearance="outline">
+      <mat-label>Ingrese Modelo</mat-label>
+      <input matInput #input2 maxlength="4" placeholder="YYYY">
+      <mat-hint align="end">{{input2.value?.length || 0}}/4</mat-hint>
+    </mat-form-field>
+    <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Seleccione</mat-label>
+        <mat-select>
+          <mat-option value="Alfa Romeo">ALFA ROMERO</mat-option>
+          <mat-option value="Audi">AUDI</mat-option>
+          <mat-option value="BMW">BMW</mat-option>
+          <mat-option value="Chevrolet">CHEVROLET</mat-option>
+          <mat-option value="Ferrari">FERRARI</mat-option>
+          <mat-option value="Mazda">MAZDA</mat-option>
+          <mat-option value="Merdedes">MERCEDES</mat-option>
+          <mat-option value="Peugeot">PEUGEOT</mat-option>
+          <mat-option value="Porche">PORSCHE</mat-option>
+          <mat-option value="Reanult">RENAULT</mat-option>
+          <mat-option value="Toyota">TOYOTA</mat-option>
+        </mat-select>
+        <mat-hint align="end">Marca de camiones</mat-hint>
+      </mat-form-field>
+  
+      <div>
+          <label>Seleccione el tipo de vehiculo: </label><br>
+          <mat-radio-group aria-label="Seleccione">
+              <mat-radio-button value="Camioneta">CAMIONETA</mat-radio-button>
+              <mat-radio-button value="Campero">CAMPERO</mat-radio-button>
+              <mat-radio-button value="Carro">CARRO</mat-radio-button>
+              <mat-radio-button value="Furgon">FURGÓN</mat-radio-button>
+            </mat-radio-group>
         </div>
-        <br> 
-        <mat-form-field appearance="outline">
-            <mat-label>Modelo</mat-label>
-            <input #input2 matInput type="text" placeholder="YYYY" formControlName="modelo" maxlength="4">
-            <mat-hint align="end">{{input2.value?.length || 0}}/4</mat-hint>
+  <br>
+        <mat-form-field hintLabel="Maximo 5 digitos" appearance="outline">
+          <mat-label>Ingrese Capacidad en Kg</mat-label>
+          <input matInput #input3 maxlength="5" placeholder="34000">
+          <mat-hint align="end">{{input3.value?.length || 0}}/5</mat-hint>
         </mat-form-field>
-        <div *ngIf="form.get('modelo')?.errors && form.get('modelo')?.touched">
-            <p *ngIf="form.get('modelo')?.hasError('required')">
-                Es un campo requerido
-            </p>
-            <p *ngIf="form.get('modelo')?.hasError('min') || form.get('modelo')?.hasError('max')">
-                Modelos entre 1970 y 2022
-            </p>
-        </div>
-        <br> 
-        <mat-form-field appearance="outline">
-            <mat-label>Tipo de vehículo</mat-label>
-            <mat-select [(value)]="selectedTipo" formControlName="tipoVehiculo">
-              <mat-option value="Camioneta">CAMIONETA</mat-option>
-              <mat-option value="Campero">CAMPERO</mat-option>
-              <mat-option value="Carro">CARRO</mat-option>
-              <mat-option value="Furgon">FURGÓN</mat-option>
-            </mat-select>
-            
-        </mat-form-field>
-        <div *ngIf="form.get('tipoVehiculo')?.errors && form.get('tipoVehiculo')?.touched">
-            <p *ngIf="form.get('tipoVehiculo')?.hasError('required')">
-                Es un campo requerido
-            </p>
-        </div>
-<br>  
-        <mat-form-field appearance="outline">
-            <mat-label>Capacidad</mat-label>
-            <input matInput #input3 type="text" placeholder="1500Kg" formControlName="capacidad" maxlength="7">
-            <mat-hint align="end">{{input3.value?.length || 0}}/7</mat-hint>
-        </mat-form-field>
-        <div *ngIf="form.get('capacidad')?.errors && form.get('capacidad')?.touched">
-            <p *ngIf="form.get('capacidad')?.hasError('required')">
-                Es un campo requerido
-            </p>
-        </div>
+  <br>
+        <button mat-raised-button color="accent">Registrar</button>
+      </form>
+  <!-- <form [formGroup]="form"(ngSubmit)="insertVehiculo($event)">
+    <mat-form-field hintLabel="Maximo 7 caracteres" appearance="outline">
+      <mat-label>Ingrese la placa</mat-label>
+      <input matInput #input maxlength="7" placeholder="ABC-123">
+      <mat-hint align="end">{{input.value?.length || 0}}/7</mat-hint>
+    </mat-form-field>
+  <br>
+  
+  <mat-form-field hintLabel="Maximo 4 caracteres" appearance="outline">
+    <mat-label>Ingrese Modelo</mat-label>
+    <input matInput #input2 maxlength="4" placeholder="YYYY">
+    <mat-hint align="end">{{input2.value?.length || 0}}/4</mat-hint>
+  </mat-form-field>
+  <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Seleccione</mat-label>
+      <mat-select>
+        <mat-option value="Alfa Romeo">ALFA ROMERO</mat-option>
+        <mat-option value="Audi">AUDI</mat-option>
+        <mat-option value="BMW">BMW</mat-option>
+        <mat-option value="Chevrolet">CHEVROLET</mat-option>
+        <mat-option value="Ferrari">FERRARI</mat-option>
+        <mat-option value="Mazda">MAZDA</mat-option>
+        <mat-option value="Merdedes">MERCEDES</mat-option>
+        <mat-option value="Peugeot">PEUGEOT</mat-option>
+        <mat-option value="Porche">PORSCHE</mat-option>
+        <mat-option value="Reanult">RENAULT</mat-option>
+        <mat-option value="Toyota">TOYOTA</mat-option>
+      </mat-select>
+      <mat-hint align="end">Marca de camiones</mat-hint>
+    </mat-form-field>
 
-        <div style="text-align: center;">
-          <button type="submit" mat-raised-button color="primary" style="width: 150px;" [routerLink]="['/camion/registrar-camion']" >
-              <mat-icon>save</mat-icon><span>Guardar</span>
-          </button>
+    <div>
+        <label>Seleccione el tipo de vehiculo: </label><br>
+        <mat-radio-group aria-label="Seleccione">
+            <mat-radio-button value="Camioneta">CAMIONETA</mat-radio-button>
+            <mat-radio-button value="Campero">CAMPERO</mat-radio-button>
+            <mat-radio-button value="Carro">CARRO</mat-radio-button>
+            <mat-radio-button value="Furgon">FURGÓN</mat-radio-button>
+          </mat-radio-group>
       </div>
-  </form>
-</div>
-
-<button mat-fab color="accent" style="float: left; left: 150px;" [routerLink]="['/camion']">
-  <mat-icon>arrow_back</mat-icon>
-</button>
-</div>
+<br>
+      <mat-form-field hintLabel="Maximo 5 digitos" appearance="outline">
+        <mat-label>Ingrese Capacidad en Kg</mat-label>
+        <input matInput #input3 maxlength="5" placeholder="34000">
+        <mat-hint align="end">{{input3.value?.length || 0}}/5</mat-hint>
+      </mat-form-field>
+<br>
+      <button mat-raised-button color="accent">Registrar</button>
+    </form> -->
+  </div>
