@@ -53,7 +53,13 @@ export class CamionComponent implements OnInit {
     let size=event.pageSize;
     this.vehiculoService.listarPaginado(page,size).pipe(
       map((v:VehiculoData)=>this.dataSource=v)
-    ).subscribe();
+    ).subscribe(data=>{
+      this.dataSource.paginator=this.paginator;
+
+      this.barraProgreso.progressBarReactiva.next(true);
+      this.ListaVehiculos=new MatTableDataSource(data.content);
+      this.ListaVehiculos.sort = this.sort;
+    });
     console.log(page);
   }
 
