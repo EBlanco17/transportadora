@@ -1,20 +1,62 @@
+<script>
+    function soloLetras(e){
+        key=e.keyCode || e.which;
+        tecla=String.fromCharCode(key).toString();
+        letras="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        especiales=[8,13];
+        tecla_especial=false;
+        for(var i in especiales){
+            if (key==especiales[i]) {
+                tecla_especial=true;
+                break;
+            }
+        }
+        if(letras.indexOf==-1){
+            alert("insertar solo letas");
+            return false;
+        }
+    }
+    function alpha(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123));
+    }
+    function beta(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k >= 48 && k <= 57));
+    }
+</script>
+
 <div class="example-container">
   <h2 class="center">Registrar Vehiculo</h2>
   <div>
       <form [formGroup]="form" (ngSubmit)="nuevoVehiculo($event)">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" style="width: 175px;">
               <mat-label>Placa</mat-label>
-              <input #input matInput type="text" placeholder="abc-123" formControlName="placa" maxlength="7">
-              <mat-hint align="end">{{input.value?.length || 0}}/7</mat-hint>
+              <input #input matInput type="text" placeholder="ABC" formControlName="placa" maxlength="3" style="width: 175px;" (input)="inputValidator($event)" >
+              <mat-hint align="end">{{input.value?.length || 0}}/3</mat-hint>
           </mat-form-field>
           <div *ngIf="form.get('placa')?.errors && form.get('placa')?.touched">
               <p *ngIf="form.get('placa')?.hasError('maxlength') || form.get('placa')?.hasError('minlength')">
-                  Placa inválida. Ej: abc-123
+                  Placa inválida. Ej: abc
               </p>
               <p *ngIf="form.get('placa')?.hasError('required')">
                   Es un campo requerido
               </p>
-          </div>
+          </div>-
+          <mat-form-field appearance="outline"style="width: 175px;">
+                <input #input matInput type="text" placeholder="123" formControlName="placa2" maxlength="3" style="width: 175px;" (input)="inputValidatorNum($event)">
+                <mat-hint align="end">{{input.value?.length || 0}}/3</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('placa2')?.errors && form.get('placa2')?.touched">
+                <p *ngIf="form.get('placa2')?.hasError('maxlength') || form.get('placa2')?.hasError('minlength')">
+                    Placa inválida. Ej: 123
+                </p>
+                <p *ngIf="form.get('placa2')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+            </div>
           <br> 
           <mat-form-field appearance="outline">
             <mat-label>Marca de vehículo</mat-label>
@@ -41,7 +83,7 @@
           <br> 
           <mat-form-field appearance="outline">
               <mat-label>Modelo</mat-label>
-              <input #input2 matInput type="text" placeholder="YYYY" formControlName="modelo" maxlength="4">
+              <input #input2 matInput type="text" placeholder="YYYY" formControlName="modelo" maxlength="4" (input)="inputValidatorNum($event)">
               <mat-hint align="end">{{input2.value?.length || 0}}/4</mat-hint>
           </mat-form-field>
           <div *ngIf="form.get('modelo')?.errors && form.get('modelo')?.touched">
@@ -71,7 +113,7 @@
   <br>  
           <mat-form-field appearance="outline">
               <mat-label>Capacidad</mat-label>
-              <input matInput #input3 type="text" placeholder="1500Kg" formControlName="capacidad" maxlength="7">
+              <input matInput #input3 type="text" placeholder="1500Kg" formControlName="capacidad" maxlength="7" (input)="inputValidatorNum($event)">
               <mat-hint align="end">{{input3.value?.length || 0}}/7</mat-hint>
           </mat-form-field>
           <div *ngIf="form.get('capacidad')?.errors && form.get('capacidad')?.touched">

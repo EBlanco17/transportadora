@@ -14,8 +14,10 @@ export class RegistrarCamionComponent implements OnInit {
   form!: FormGroup;
 
   vehicle: Vehiculo = new Vehiculo();
-selectedTipo !: string;
-selectedMarca !: string;
+  selectedTipo !: string;
+  placa !: string;
+  placa2 !: string;
+  selectedMarca !: string;
   veh: any;
 
   constructor(private VehService: VehiculoService, private formBuilder: FormBuilder, 
@@ -32,12 +34,12 @@ selectedMarca !: string;
 
     const v: Vehiculo = new Vehiculo();
 
-    v.placa = this.form.value.placa;
+    v.placa = this.form.value.placa+"-"+this.form.value.placa2;
     v.marca = this.form.value.marca;
     v.modelo = this.form.value.modelo;
     v.tipoVehiuclo = this.form.value.tipoVehiculo;
     v.capacidad = this.form.value.capacidad;
-
+    console.log(v.placa);
     if (this.form.valid)
     {
       this.VehService.guardar(v).subscribe(success => {
@@ -56,12 +58,33 @@ selectedMarca !: string;
     this.form = this.formBuilder.group(
       {
         idVehiculo: ['', []],
-        placa: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
+        placa: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3),Validators.pattern(/^[a-zA-Z]+$/)]],
+        placa2: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3),Validators.pattern(/^[0-9]+$/)]],
         marca: ['', [Validators.required]],
         modelo: ['', [Validators.required, Validators.min(1970), Validators.max(2022)]],
         tipoVehiculo: ['', [Validators.required]],
         capacidad: ['', [Validators.required]],
       });
 
+  }
+  public inputValidator(event: any) {
+    //console.log(event.target.value);
+    const pattern = /^[a-zA-Z]*$/;   
+    //let inputChar = String.fromCharCode(event.charCode)
+    if (!pattern.test(event.target.value)) {
+      event.target.value = event.target.value.replace(/[^a-zA-Z]/g, "");
+      // invalid character, prevent input
+
+    }
+  }
+  public inputValidatorNum(event: any) {
+    //console.log(event.target.value);
+    const pattern = /^[0-9]*$/;   
+    //let inputChar = String.fromCharCode(event.charCode)
+    if (!pattern.test(event.target.value)) {
+      event.target.value = event.target.value.replace(/[^0-9]/g, "");
+      // invalid character, prevent input
+
+    }
   }
 }
