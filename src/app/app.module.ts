@@ -62,7 +62,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["example.com"],
+        allowedDomains: ["159.223.107.103:8080"],
         disallowedRoutes: ["http://159.223.107.103:8080/movitapp-backend/oauth/token"],
       },
     }),

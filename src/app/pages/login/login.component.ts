@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.login('admin','123456').subscribe(data =>{
-      console.log(data);
+      //console.log(data);
       //localStorage
       /*const helper = new JwtHelperService();
  
