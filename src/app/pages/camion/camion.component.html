@@ -4,7 +4,7 @@
     </button>
     <div fxLayout fxLayoutAlign="center center">
         <mat-form-field fxFlex="40%">
-            <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar">
+            <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar" autocomplete="off">
         </mat-form-field>
     </div>
     <table mat-table [dataSource]="ListaVehiculos" class="mat-elevation-z8" matSort>

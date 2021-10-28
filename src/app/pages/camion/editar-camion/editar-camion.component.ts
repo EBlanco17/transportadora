@@ -55,7 +55,7 @@ export class EditarCamionComponent implements OnInit {
     if (this.form.valid)
     {
       this.VehService.editar(v).subscribe(success => {
-        console.log(success);
+        console.log("success");
         this.router.navigate(['/camion']);
         this.form.reset();
       }, err => {

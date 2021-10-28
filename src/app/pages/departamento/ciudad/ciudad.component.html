@@ -1,7 +1,7 @@
 <div [hidden]="route.children.length !== 0">
         <div fxLayout fxLayoutAlign="center center">
             <mat-form-field fxFlex="40%">
-                <input matInput type="text" (keyup)="filtrar($event)" placeholder="Filter">
+                <input matInput type="text" (keyup)="filtrar($event)" placeholder="Filter" autocomplete="off">
             </mat-form-field>
         </div>
 <table mat-table [dataSource]="dataSourceCiudad" class="mat-elevation-z8" matSort>

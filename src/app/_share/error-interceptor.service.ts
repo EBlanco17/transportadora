@@ -33,7 +33,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
           if(err.error.status == 400) {
                 this.openSnackBar(err.error.message);
           } else if(err.status == 401) {
-                this.router.navigate(['no-permitido']);
+                this.router.navigate(['unauthorized']);
                 this.openSnackBar(err.error.message);
           } else if(err.error.status == 404) {
                 this.openSnackBar(err.error.message);
@@ -52,8 +52,8 @@ export class ErrorInterceptorService implements HttpInterceptor {
   }
 
   private openSnackBar(mensaje: string) {
-    this.snackBar.open(mensaje, 'Información', {
-      duration: 2000,
+    this.snackBar.open(mensaje, 'Aceptar', {
+      duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });

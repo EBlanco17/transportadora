@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Vehiculo} from '../_model/Vehiculo';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError, Subject } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 export interface VehiculoData {
   paginator: any;
@@ -43,10 +43,19 @@ export interface VehiculoData {
 export class VehiculoService{
 
   private url: string = `${environment.HOST}/vehiculos`;
+private _refresh$ = new Subject<void>();
 
+get refresh$(){
+  return this._refresh$;
+}
   constructor(private http: HttpClient){}
+
   public guardar(vehiculo: Vehiculo){
-    return this.http.post(`${this.url}/guardar`, vehiculo);
+    return this.http.post(`${this.url}/guardar`, vehiculo).pipe(
+      tap(() => {
+        this._refresh$.next();
+      })
+    );
   }
   public listar(id : number) {
     return this.http.get(`${this.url}/listar/`+ id);
@@ -63,7 +72,11 @@ export class VehiculoService{
     );
   }
   public editar(vehiculo: Vehiculo){
-    return this.http.put(`${this.url}/editar`, vehiculo);
+    return this.http.put(`${this.url}/editar`, vehiculo).pipe(
+      tap(() => {
+        this._refresh$.next();
+      })
+    );
   }
  
 }
