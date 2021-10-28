@@ -32,20 +32,18 @@ export class ErrorInterceptorService implements HttpInterceptor {
           console.log(err);
           if(err.error.status == 400) {
                 this.openSnackBar(err.error.message);
-                this.guardarLog(err.error.message);
+          } else if(err.status == 401) {
+                this.router.navigate(['no-permitido']);
+                this.openSnackBar(err.error.message);
           } else if(err.error.status == 404) {
                 this.openSnackBar(err.error.message);
-                this.guardarLog(err.error.message);
           } else if(err.error.status == 405) {
                 this.router.navigate(['notAllowed']);
                 this.openSnackBar(err.error.message);
-                this.guardarLog(err.error.message);
           } else if(err.error.status == 415) {
                 this.openSnackBar(err.error.message);
-                this.guardarLog(err.error.message);
           } else  if(err.error.status == 500) {
                 this.router.navigate(['error']);
-                this.guardarLog(err.error.message);
           }
           
           return EMPTY;

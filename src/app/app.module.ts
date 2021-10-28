@@ -23,6 +23,15 @@ import { ErrorInterceptorService } from './_share/error-interceptor.service';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { DepartamentoComponent } from './pages/departamento/departamento.component';
 import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
+import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
+import { environment } from 'src/environments/environment';
+import { JwtModule } from '@auth0/angular-jwt';
+
+
+export function tokenGetter() {
+  let tk=sessionStorage.getItem(environment.TOKEN);
+  return tk != null ? tk:'';
+}
 
 @NgModule({
   declarations: [
@@ -40,7 +49,8 @@ import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
     RegistrarCamionComponent,
     NotAllowedComponent,
     DepartamentoComponent,
-    CiudadComponent
+    CiudadComponent,
+    NoPermitidoComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +58,14 @@ import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["example.com"],
+        disallowedRoutes: ["http://159.223.107.103:8080/movitapp-backend/oauth/token"],
+      },
+    }),
     
   ],
   providers: [

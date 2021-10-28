@@ -14,6 +14,7 @@ import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { DepartamentoComponent } from './pages/departamento/departamento.component';
 import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
+import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'editar', component: EditarComponent},
   {path: 'error', component: NotOkComponent},
   {path: 'notAllowed', component: NotAllowedComponent},
+  {path: 'no-Permitido', component: NoPermitidoComponent},
   {path: '**', component: NotFoundComponent}
   
 ];

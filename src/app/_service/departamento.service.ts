@@ -16,6 +16,12 @@ export class DepartamentoService {
   public listar(){
     return this.http.get<Departamento[]>(`${this.url}/listar`);
   }
+  /* envio de token no optimo
+  public listar(){
+    return this.http.get<Departamento[]>(`${this.url}/listar`, {
+      headers:new HttpHeaders().set('Authorization','bearer token')
+    });
+  }*/
   public listarCiudades(idDpt: number){
     return this.http.get<Ciudades[]>(`${this.url}/ciudad/listarPorDepartamnto/${idDpt}`);
   }
