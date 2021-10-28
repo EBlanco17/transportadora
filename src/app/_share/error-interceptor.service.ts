@@ -11,60 +11,64 @@ import { ProgressBarService } from '../_service/progress-bar.service';
   providedIn: 'root'
 })
 export class ErrorInterceptorService implements HttpInterceptor {
-  
+
   constructor(private snackBar: MatSnackBar,
-              private router: Router,
-              private barraProgreso : ProgressBarService) { }
+    private router: Router,
+    private barraProgreso: ProgressBarService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(req).pipe(retry(environment.REINTENTOS)).
-    pipe(tap(event => {
-      if (event instanceof HttpResponse) {
-        if (event.body && event.body.error === true && event.body.errorMessage) {
-          throw new Error(event.body.errorMessage);
-        }/*else{
+      pipe(tap(event => {
+        if (event instanceof HttpResponse) {
+          if (event.body && event.body.error === true && event.body.errorMessage) {
+            throw new Error(event.body.errorMessage);
+          }/*else{
             this.snackBar.open("EXITO", 'AVISO', { duration: 5000 });    
         }*/
-      }
-    })).pipe(catchError((err) => {
-          this.barraProgreso.progressBarReactiva.next(true);
-          console.log(err);
-          if(err.error.status == 400) {
-                this.openSnackBar(err.error.message);
-          } else if(err.status == 401) {
-                this.router.navigate(['unauthorized']);
-                this.openSnackBar(err.error.message);
-          } else if(err.error.status == 404) {
-                this.openSnackBar(err.error.message);
-          } else if(err.error.status == 405) {
-                this.router.navigate(['notAllowed']);
-                this.openSnackBar(err.error.message);
-          } else if(err.error.status == 415) {
-                this.openSnackBar(err.error.message);
-          } else  if(err.error.status == 500) {
-                this.router.navigate(['error']);
+        }
+      })).pipe(catchError((err) => {
+        this.barraProgreso.progressBarReactiva.next(true);
+        console.log(err);
+        if (err.error.status == 400) {
+          this.openSnackBar(err.error.message.slice(4, err.error.message.length));
+        } else if (err.status == 401) {
+          if (err.error.message === 'No estas autorizado para acceder a este recurso') {
+            this.openSnackBar(err.error.message);
+            this.router.navigate(['unauthorized']);
+          } else {
+            this.openSnackBar(err.error.message.slice(4, err.error.message.length));
           }
-          
-          return EMPTY;
-    }));
+        } else if (err.error.status == 404) {
+          this.openSnackBar(err.error.message.slice(4, err.error.message.length));
+        } else if (err.error.status == 405) {
+          this.openSnackBar(err.error.message.slice(4, err.error.message.length));
+          this.router.navigate(['notAllowed']);
+        } else if (err.error.status == 415) {
+          this.openSnackBar(err.error.message.slice(4, err.error.message.length));
+        } else if (err.error.status == 500) {
+          this.router.navigate(['error']);
+        }
+
+        return EMPTY;
+      }));
 
   }
 
   private openSnackBar(mensaje: string) {
     this.snackBar.open(mensaje, 'Aceptar', {
-      duration: 5000,
+      duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
   }
 
-  private guardarLog(console :any){
+  private guardarLog(console: any) {
     var fs = require('fs')
     var logger = fs.createWriteStream('../_log/errores.txt', {
-      flags: 'a' 
+      flags: 'a'
     })
-    
-    logger.write(console); 
+
+    logger.write(console);
   }
 }
