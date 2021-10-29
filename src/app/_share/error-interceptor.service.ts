@@ -34,11 +34,11 @@ export class ErrorInterceptorService implements HttpInterceptor {
                 this.openSnackBar(err.error.message);
           } else if(err.status == 401) {
               if (err.error.message=='No estas autorizado para acceder a este recurso') {
-                this.router.navigate(['no-permitido']);
+                this.router.navigate(['unauthorized']);
                 this.openSnackBar(err.error.message);
               } 
               if (err.error.error_description=='Bad credentials') {
-                this.openSnackBar('usuario o contraseña erroneos');
+                this.openSnackBar('Datos erroneos');
               }
               if (err.error.error === 'invalid_token'){
 
@@ -53,7 +53,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
               //this.openSnackBar(err.error.message);
           } else if (err.status==400){
             if (err.error.error_description=='Bad credentials') {
-              this.openSnackBar('usuario o contraseña erroneos');
+              this.openSnackBar('Datos erróneos');
             }
           }else if(err.error.status == 404) {
                 this.openSnackBar(err.error.message);
@@ -72,7 +72,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
   }
 
   private openSnackBar(mensaje: string) {
-    this.snackBar.open(mensaje, 'Información', {
+    this.snackBar.open(mensaje, 'Aceptar', {
       duration: 10000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
