@@ -1,1 +1,38 @@
-<h1>Inicio de Sesión</h1>
+<div>
+    <h1 class="center">Inicio de Sesión</h1>
+    <form [formGroup]="form" (ngSubmit)="iniciar($event)">
+        <mat-form-field appearance="outline" >
+            <mat-label>Usuario</mat-label>
+            <input #input matInput type="text" placeholder="ABC" formControlName="user" maxlength="15" style="width: 350px;"  >
+            <mat-hint align="end">{{input.value?.length || 0}} caracteres</mat-hint>
+        </mat-form-field>
+        <div *ngIf="form.get('user')?.errors && form.get('user')?.touched">
+            <p *ngIf="form.get('user')?.hasError('maxlength') || form.get('user')?.hasError('minlength')">
+                Placa inválida. Ej: abc
+            </p>
+            <p *ngIf="form.get('user')?.hasError('required')">
+                Es un campo requerido
+            </p>
+        </div>
+        <br>
+        <mat-form-field appearance="outline" >
+            <mat-label>Contraseña</mat-label>
+            <input #input matInput type="password" placeholder="ABC" formControlName="password" maxlength="15" style="width: 350px;"  >
+            <mat-hint align="end">{{input.value?.length || 0}} caracteres</mat-hint>
+        </mat-form-field>
+        <div *ngIf="form.get('user')?.errors && form.get('password')?.touched">
+            <p *ngIf="form.get('password')?.hasError('maxlength') || form.get('password')?.hasError('minlength')">
+                Placa inválida. Ej: abc
+            </p>
+            <p *ngIf="form.get('password')?.hasError('required')">
+                Es un campo requerido
+            </p>
+        </div>
+        <br>
+        <div style="text-align: center;">
+            <button type="submit" mat-raised-button color="primary" style="width: 150px;"  >
+                <mat-icon>login</mat-icon><span>Ingresar</span>
+            </button>
+        </div>
+    </form>
+</div>

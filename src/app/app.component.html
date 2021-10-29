@@ -3,8 +3,6 @@
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
     <mat-toolbar color="primary" class="example-toolbar" > 
-        <!-- http://143.244.150.210/movitapp-back/departamentos/listar-->
-        <!-- http://143.244.150.210/movitapp-back/departamentos/ciudad/listarPorDepartamnto/#-->
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
         <mat-icon *ngIf="drawer.opened">close</mat-icon>
@@ -13,7 +11,7 @@
   
   
         <span class="example-spacer"></span>
-  
+        <ng-container *ngIf="this.log">
         <button mat-icon-button [matMenuTriggerFor]="menu">
               <mat-icon>more_vert</mat-icon>
           </button>
@@ -23,12 +21,12 @@
                   <mat-icon>account_box</mat-icon>
                   <span>Mi Perfil</span>
               </button>
-              <button mat-menu-item [routerLink]="['/login']" routerLinkActive="active">
+              <button mat-menu-item (click)="cerrarSesion()" >
                   <mat-icon>exit_to_app</mat-icon>
                   <span>Cerrar Sesión</span>
               </button>
           </mat-menu>
-    
+        </ng-container>
         
     </mat-toolbar>
     
@@ -36,25 +34,28 @@
       <mat-drawer #drawer style="width: 300px" mode="over">
   
           <img src="assets/logo.png" width="100%" />
-    
-          <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/pedido']" routerLinkActive="active">
-              <mat-icon>search</mat-icon>
-              <span>Buscar Pedido</span>
-          </button>
-          <mat-divider></mat-divider>  
-          
-          <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/login']" routerLinkActive="active">
-            <mat-icon>manage accounts</mat-icon>
-            <span>Ingresar</span>
-          </button>
-          <mat-divider></mat-divider>  
-          
-          <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/registro']" routerLinkActive="active">
-            <mat-icon>person_add</mat-icon>
-            <span>Registrase</span>
-          </button>
-          <mat-divider></mat-divider> 
-  
+          <ng-container *ngIf="this.log">
+            <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/pedido']" routerLinkActive="active">
+                <mat-icon>search</mat-icon>
+                <span>Buscar Pedido</span>
+            </button>
+            <mat-divider></mat-divider>  
+          </ng-container>
+          <ng-container *ngIf="!this.log">
+            <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/login']" routerLinkActive="active">
+              <mat-icon>manage accounts</mat-icon>
+              <span>Ingresar</span>
+            </button>
+            <mat-divider></mat-divider>  
+          </ng-container>
+            <ng-container *ngIf="!this.log">
+            <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/registro']" routerLinkActive="active">
+              <mat-icon>person_add</mat-icon>
+              <span>Registrase</span>
+            </button>
+            <mat-divider></mat-divider> 
+          </ng-container>
+          <ng-container *ngIf="this.log">
           <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/editar']" routerLinkActive="active">
             <mat-icon>edit</mat-icon>
             <span>Editar</span>
@@ -78,7 +79,7 @@
             <span>Conductores</span>
           </button>
           <mat-divider></mat-divider>  
-        
+        </ng-container>
       </mat-drawer>
   
         <div class="centrado">
