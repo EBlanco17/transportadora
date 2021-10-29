@@ -16,8 +16,8 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.barraProgreso.progressBarReactiva.subscribe(data =>{
-        //this.flagProgressBar = data;  
-        this.flagProgressBar = !this.flagProgressBar;
+        this.flagProgressBar = data;  
+        //this.flagProgressBar = !this.flagProgressBar;
     });
     this.log=this.loginService.estaLogeado();
   }

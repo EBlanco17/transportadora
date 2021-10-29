@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'editar', component: EditarComponent},
   {path: 'error', component: NotOkComponent},
   {path: 'notAllowed', component: NotAllowedComponent},
-  {path: 'no-Permitido', component: NoPermitidoComponent},
+  {path: 'unauthorized', component: NoPermitidoComponent},
   {path: '**', component: NotFoundComponent}
   
 ];

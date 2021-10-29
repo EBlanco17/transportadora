@@ -38,7 +38,7 @@ export class RegistrarCamionComponent implements OnInit {
     v.marca = this.form.value.marca;
     v.modelo = this.form.value.modelo;
     v.tipoVehiuclo = this.form.value.tipoVehiculo;
-    v.capacidad = this.form.value.capacidad;
+    v.capacidad = this.form.value.capacidad + "Kg";
     console.log(v.placa);
     if (this.form.valid)
     {
