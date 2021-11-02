@@ -15,23 +15,26 @@ import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { DepartamentoComponent } from './pages/departamento/departamento.component';
 import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
 import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { GuardianService } from './_share/guardian.service';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'pedido', component: PedidoComponent},
-  {path: 'conductor', component: ConductorComponent},
+  {path: 'perfil', component: PerfilComponent,canActivate: [GuardianService]},
+  {path: 'pedido', component: PedidoComponent,canActivate: [GuardianService]},
+  {path: 'conductor', component: ConductorComponent,canActivate: [GuardianService]},
   {path: 'camion', component: CamionComponent, children: [
-    {path: 'registrar-camion', component: RegistrarCamionComponent},
-    {path: 'editar-camion/:idCamion', component: EditarCamionComponent}
-  ]},
+    {path: 'registrar-camion', component: RegistrarCamionComponent,canActivate: [GuardianService]},
+    {path: 'editar-camion/:idCamion', component: EditarCamionComponent,canActivate: [GuardianService]}
+  ],canActivate: [GuardianService]},
   {path: 'departamento', component: DepartamentoComponent, children:[
-    {path: 'ciudad/:idDep', component: CiudadComponent}
-  ]},
-  {path: 'editar', component: EditarComponent},
+    {path: 'ciudad/:idDep', component: CiudadComponent,canActivate: [GuardianService]}
+  ],canActivate: [GuardianService]},
+  {path: 'editar', component: EditarComponent,canActivate: [GuardianService]},
+  {path: 'usuario', component: UsuarioComponent,canActivate: [GuardianService]},
   {path: 'error', component: NotOkComponent},
   {path: 'notAllowed', component: NotAllowedComponent},
   {path: 'unauthorized', component: NoPermitidoComponent},

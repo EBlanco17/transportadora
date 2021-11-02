@@ -26,6 +26,7 @@ import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
 import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
 import { environment } from 'src/environments/environment';
 import { JwtModule } from '@auth0/angular-jwt';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
 
 
 export function tokenGetter() {
@@ -50,7 +51,8 @@ export function tokenGetter() {
     NotAllowedComponent,
     DepartamentoComponent,
     CiudadComponent,
-    NoPermitidoComponent
+    NoPermitidoComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
