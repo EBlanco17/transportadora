@@ -49,7 +49,6 @@ export class GuardianService implements CanActivate{
           this.loginService.closeSession();
           return false;
         }
-        return true;
       }else{
         this.loginService.closeSession();
         return false;
