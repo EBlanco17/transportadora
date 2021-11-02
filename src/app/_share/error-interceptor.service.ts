@@ -40,6 +40,9 @@ export class ErrorInterceptorService implements HttpInterceptor {
               if (err.error.error_description=='Bad credentials') {
                 this.openSnackBar('Datos erroneos');
               }
+              if (err.error.error_description=='----Nick o password incorecto') {
+                this.openSnackBar('Datos erroneos');
+              }
               if (err.error.error === 'invalid_token'){
 
                 this.openSnackBar('Token inválido');
