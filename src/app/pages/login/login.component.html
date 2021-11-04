@@ -1,30 +1,21 @@
-<div>
+<form class="custom-form" [formGroup]="form" (ngSubmit)="iniciar($event)">
     <h1 class="center">Inicio de Sesión</h1>
-    <form [formGroup]="form" (ngSubmit)="iniciar($event)">
-        <mat-form-field appearance="outline" >
-            <mat-label>Usuario</mat-label>
-            <input matInput type="text" placeholder="usuario" formControlName="user" maxlength="15" style="width: 350px;" autocomplete="off">
-            </mat-form-field>
-        <div *ngIf="form.get('user')?.errors && form.get('user')?.touched">
-            <p *ngIf="form.get('user')?.hasError('required')">
-                Es un campo requerido
-            </p>
-        </div>
-        <br>
-        <mat-form-field appearance="outline" >
-            <mat-label>Contraseña</mat-label>
-            <input matInput type="password" placeholder="password" formControlName="password" maxlength="15" style="width: 350px;" autocomplete="off" >
-        </mat-form-field>
-        <div *ngIf="form.get('user')?.errors && form.get('password')?.touched">
-            <p *ngIf="form.get('password')?.hasError('required')">
-                Es un campo requerido
-            </p>
-        </div>
-        <br>
-        <div style="text-align: center;">
-            <button type="submit" mat-raised-button color="primary" style="width: 150px;" [disabled]="form.invalid">
-                <mat-icon>login</mat-icon><span>Ingresar</span>
-            </button>
-        </div>
-    </form>
-</div>
+    <input matInput type="text" placeholder="Usuario" formControlName="user" maxlength="15" autocomplete="off">
+    <div *ngIf="form.get('user')?.errors && form.get('user')?.touched">
+        <p *ngIf="form.get('user')?.hasError('required')">
+            Es un campo requerido
+        </p>
+    </div>
+
+    <input matInput type="password" placeholder="Password" formControlName="password" maxlength="15" autocomplete="off">
+    <div *ngIf="form.get('user')?.errors && form.get('password')?.touched">
+        <p *ngIf="form.get('password')?.hasError('required')">
+            Es un campo requerido
+        </p>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">
+            <mat-icon>login</mat-icon><span>Ingresar</span>
+    </button>
+    
+</form>
