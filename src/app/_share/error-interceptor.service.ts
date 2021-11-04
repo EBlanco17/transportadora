@@ -46,7 +46,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
       
                 sessionStorage.clear();
       
-                this.router.navigate(['no-permitido']).then(() => { window.location.reload(); });
+                this.router.navigate(['unauthorized']).then(() => { window.location.reload(); });
       
               }
               //this.router.navigate(['no-permitido']);
@@ -73,7 +73,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
 
   private openSnackBar(mensaje: string) {
     this.snackBar.open(mensaje, 'Aceptar', {
-      duration: 10000,
+      duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
