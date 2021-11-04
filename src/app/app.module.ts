@@ -25,9 +25,11 @@ import { DepartamentoComponent } from './pages/departamento/departamento.compone
 import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
 import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
 import { environment } from 'src/environments/environment';
-import { JwtModule } from '@auth0/angular-jwt';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; 
+import { MomentModule } from 'angular2-moment';
 
 export function tokenGetter() {
   let tk=sessionStorage.getItem(environment.TOKEN);
@@ -61,6 +63,8 @@ export function tokenGetter() {
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
