@@ -81,6 +81,11 @@
           <mat-icon>supervisor_account</mat-icon>
           <span>Conductores</span>
         </button>
+        <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/usuario']"
+          routerLinkActive="active">
+          <mat-icon>perm_identity</mat-icon>
+          <span>Usiario</span>
+        </button>
         <mat-divider></mat-divider>
       </ng-container>
     </mat-drawer>
