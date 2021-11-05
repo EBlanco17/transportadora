@@ -8,59 +8,38 @@ import { LoginService } from '../_service/login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GuardianService implements CanActivate{
+export class GuardianService implements CanActivate {
 
   constructor(private loginService: LoginService,
     private router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if(this.loginService.estaLogeado()==true){
+    if (this.loginService.estaLogeado()) {
+
       const helper = new JwtHelperService();
+      let token: any = sessionStorage.getItem(environment.TOKEN);
 
-      let token: any =sessionStorage.getItem(environment.TOKEN);
-
-      if(!helper.isTokenExpired(token)){
+      if (!helper.isTokenExpired(token)) {
         const decodedToken = helper.decodeToken(token);
-        const rol: string=decodedToken.authorities[0];
-        const url: string=state.url;
-        console.log(rol);
-        console.log(url);
+        const rol: string = decodedToken.authorities[0];
+        const url: string = state.url;
 
-        if(rol=="Administrador"&&url.includes('perfil')){
+        if (rol == "Administrador" && (url.includes('perfil') || url.includes('conductor') || url.includes('camion') || url.includes('departamento'))) {
           return true;
-        }else if(rol=="Administrador"&&url.includes('pedido')){
+        } else if (rol == "Conductor" && (url.includes('usuario') && url.includes('editar') && url.includes('pedido'))) {
           return true;
-        }else if(rol=="Administrador"&&url.includes('conductor')){
-          return true;
-        }else if(rol=="Administrador"&&url.includes('camion')){
-          return true;
-        }else if(rol=="Administrador"&&url.includes('registrar-camion')){
-          return true;
-        }else if(rol=="Administrador"&&url.includes('editar-camion/:idCamion')){
-          return true;
-        }else if(rol=="Administrador"&&url.includes('departamento')){
-          return true;
-        }else if(rol=="Administrador"&&url.includes('ciudad/:idDep')){
-          return true;
-        }else if(rol=="Administrador"&&url.includes('editar')){
-          return true;
-        }else if(rol=="Administrador"&&url.includes('usuario')){
-          return true;
-        }else {
+        } else {
           this.loginService.closeSession();
           return false;
         }
-      }else{
+      } else {
         this.loginService.closeSession();
         return false;
       }
-      const decodedToken = helper.decodeToken(token);
-      const expirationDate = helper.getTokenExpirationDate(token);
-      const isExpired = helper.isTokenExpired(token);
-      return true;
-    }else{
+
+    } else {
       this.router.navigate(['unauthorized']);
       return false;
     }
-    
+
   }
 }

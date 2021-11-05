@@ -2,44 +2,43 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './app.component';
-import { RegistroComponent } from './pages/registro/registro.component';
-import { LoginComponent} from './pages/login/login.component';
-import { EditarComponent } from './pages/editar/editar.component';
-import { PerfilComponent } from './pages/perfil/perfil.component';
-import { PedidoComponent } from './pages/pedido/pedido.component';
-import { ConductorComponent } from './pages/conductor/conductor.component';
-import { CamionComponent } from './pages/camion/camion.component';
-
-import { EditarCamionComponent } from './pages/camion/editar-camion/editar-camion.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { NotOkComponent } from './pages/not-ok/not-ok.component';
-import { RegistrarCamionComponent } from './pages/camion/registrar-camion/registrar-camion.component';
-import { ErrorInterceptorService } from './_share/error-interceptor.service';
-import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
-import { DepartamentoComponent } from './pages/departamento/departamento.component';
-import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
-import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
-import { environment } from 'src/environments/environment';
-import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { JwtModule } from '@auth0/angular-jwt';
-
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; 
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
 
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { ConductorComponent } from './pages/conductor/conductor.component';
+import { RegistrarConductorComponent } from './pages/conductor/registrar-conductor/registrar-conductor.component';
+import { EditarConductorComponent } from './pages/conductor/editar-conductor/editar-conductor.component';
+import { CamionComponent } from './pages/camion/camion.component';
+import { RegistrarCamionComponent } from './pages/camion/registrar-camion/registrar-camion.component';
+import { EditarCamionComponent } from './pages/camion/editar-camion/editar-camion.component';
+import { ErrorInterceptorService } from './_share/error-interceptor.service';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { PedidoComponent } from './pages/pedido/pedido.component';
+import { EditarComponent } from './pages/editar/editar.component';
+import { DepartamentoComponent } from './pages/departamento/departamento.component';
+import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
+import { environment } from 'src/environments/environment';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NotOkComponent } from './pages/not-ok/not-ok.component';
+import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
+import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
+
 export function tokenGetter() {
-  let tk=sessionStorage.getItem(environment.TOKEN);
-  return tk != null ? tk:'';
+  let tk = sessionStorage.getItem(environment.TOKEN);
+  return tk != null ? tk : '';
 }
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistroComponent,
+    HomeComponent,
     LoginComponent,
     EditarComponent,
     PerfilComponent,
@@ -54,7 +53,9 @@ export function tokenGetter() {
     DepartamentoComponent,
     CiudadComponent,
     NoPermitidoComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    RegistrarConductorComponent,
+    EditarConductorComponent
   ],
   imports: [
     BrowserModule,
@@ -72,13 +73,13 @@ export function tokenGetter() {
         disallowedRoutes: ["http://159.223.107.103:8080/movitapp-backend/oauth/token"],
       },
     }),
-    
+
   ],
   providers: [
     {
-      provide:  HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptorService,
-      multi:    true
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

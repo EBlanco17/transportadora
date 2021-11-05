@@ -8,9 +8,9 @@
       <mat-icon *ngIf="drawer.opened">close</mat-icon>
     </button>
     <h1 class="example-app-name">LOGISTICA UDEC</h1>
-   <mat-menu yPosition="above">
-  
-  </mat-menu>
+    <mat-menu yPosition="above">
+
+    </mat-menu>
     <span class="example-spacer"></span>
     <ng-container *ngIf="this.log">
       <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -36,16 +36,18 @@
 
       <img src="assets/logo.png" width="100%" />
       <ng-container *ngIf="!this.log">
-        <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/login']" >
+
+        <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/registro']">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/login']">
           <mat-icon>manage accounts</mat-icon>
           <span>Ingresar</span>
         </button>
         <mat-divider></mat-divider>
-        <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/registro']" >
-          <mat-icon>person_add</mat-icon>
-          <span>Registrarse</span>
-        </button>
-        <mat-divider></mat-divider>
+
       </ng-container>
       <ng-container *ngIf="this.log">
         <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/pedido']"
