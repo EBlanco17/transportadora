@@ -19,6 +19,7 @@ p {
 }
 
 .custom-form {
+    text-align: center;
     overflow: hidden;
     background-color: white;
     padding: 40px 30px 30px 30px;
@@ -26,7 +27,7 @@ p {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
+    width: 500px;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -53,7 +54,7 @@ p {
 .custom-form::before {
     left: 40%;
     bottom: -130%;
-    background-color: rgba(69, 105, 144, 0.15);
+    background-color: rgba(69, 105, 144, 0.301);
     -webkit-animation: wawes 6s infinite linear;
     -moz-animation: wawes 6s infinite linear;
     animation: wawes 6s infinite linear;
@@ -62,18 +63,19 @@ p {
 .custom-form::after {
     left: 35%;
     bottom: -125%;
-    background-color: rgba(2, 128, 144, 0.2);
+    background-color: rgba(2, 128, 144, 0.288);
     -webkit-animation: wawes 7s infinite;
     -moz-animation: wawes 7s infinite;
     animation: wawes 7s infinite;
 }
 
 .custom-form input {
+    color: firebrick;
     font-family: "Asap", sans-serif;
     display: block;
     border-radius: 5px;
     font-size: 16px;
-    background: white;
+    background: rgba(0, 0, 0, 0.1);
     width: 100%;
     border: 0;
     padding: 10px 10px;
@@ -98,12 +100,12 @@ p {
     transition: background-color 300ms;
 }
 
-button:hover {
+.custom-form button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 2px 6px -1px rgba(182, 157, 230, 0.65);
+    background: rgb(136, 97, 207);
 }
 
-button:hover:active {
+.custom-form button:hover:active {
     transform: scale(0.99);
 }
 
