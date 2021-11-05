@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   constructor(private barraProgreso: ProgressBarService, private loginService: LoginService,
     private idle: Idle, private keepalive: Keepalive, private router: Router) {
     if (loginService.estaLogeado()) {
-      idle.setIdle(15); //tiempo de inactividad en segundos
+      idle.setIdle(15*60); //tiempo de inactividad en segundos
       idle.setTimeout(5); //tiempo añadido que tiene el usuario cuando se acabe el tiempo de inactividad
       idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
