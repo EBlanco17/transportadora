@@ -1,31 +1,9 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
-  
-  .example-sidenav {
-    padding: 20px;
-  }
-  
-  .example-container {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  .example-sidenav-content {
-    display: flex;
-    height: 100%;
-    align-items: center;
-  }
-  .centrado{
-    text-align:center;
-    padding:0;
-    margin: 0;
-    width: 1300px;
-    align-items: center;
-    flex-grow: 1;
-  }
+.sidenav{
+  width: 300px;
+}
+.menu {
+  flex: 1 1 auto;
+}
+.name{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
