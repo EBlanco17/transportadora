@@ -1,0 +1,42 @@
+h1{
+    text-align: center;
+    color: rgb(20, 45, 114);
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: underline;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+p{
+    color: darkred;
+    float: inline-start;
+}
+.custom-form{
+    background:rgb(255, 255, 255);
+    text-align: center;
+    }
+
+.btn button {
+    width: 20%;
+    font-family: "Asap", sans-serif;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: -5px;
+    background-color: #f45b69;
+}
+
+.btn button:hover {
+    transform: translateY(-3px);
+    background: rgb(136, 97, 207);
+}
+mat-form-field{
+    width: 45%;
+    color: darkblue;
+    font-size: 16px;
+}
