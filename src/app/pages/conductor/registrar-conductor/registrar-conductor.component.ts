@@ -4,7 +4,7 @@ import { UsuarioService } from 'src/app/_service/usuario.service';
 import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.service';
 import { ActivatedRoute,Params,Router } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, FormBuilder, FormControl, Validator, Validators } from '@angular/forms';
-
+import { Mensajes } from 'src/app/_share/mensajes';
 @Component({
   selector: 'app-registrar-conductor',
   templateUrl: './registrar-conductor.component.html',
@@ -18,7 +18,7 @@ export class RegistrarConductorComponent implements OnInit {
   
   constructor(private userService: UsuarioService, private formBuilder: FormBuilder, 
     public errorInterceptor: ErrorInterceptorService, private router: Router, 
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute, private mensaje : Mensajes) {
       this.buildForm();
      }
 
@@ -46,7 +46,7 @@ export class RegistrarConductorComponent implements OnInit {
     if (this.form.valid)
     {
       this.userService.guardar(u).subscribe(success => {
-        console.log(success);
+        this.mensaje.openSnackBar('Usuario creado');
         this.form.reset();
         this.router.navigate(['/conductor']);
       }, err => {

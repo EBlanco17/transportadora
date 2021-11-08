@@ -4,7 +4,7 @@ import { VehiculoService } from 'src/app/_service/vehiculo.service';
 import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.service';
 import { ActivatedRoute,Params,Router } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, FormBuilder, FormControl, Validator, Validators } from '@angular/forms';
-
+import { Mensajes } from 'src/app/_share/mensajes';
 @Component({
   selector: 'app-registrar-camion',
   templateUrl: './registrar-camion.component.html',
@@ -22,7 +22,7 @@ export class RegistrarCamionComponent implements OnInit {
 
   constructor(private VehService: VehiculoService, private formBuilder: FormBuilder, 
               public errorInterceptor: ErrorInterceptorService, private router: Router, 
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private mensaje : Mensajes) {
       this.buildForm();
     }
 
@@ -39,11 +39,10 @@ export class RegistrarCamionComponent implements OnInit {
     v.modelo = this.form.value.modelo;
     v.tipoVehiuclo = this.form.value.tipoVehiculo;
     v.capacidad = this.form.value.capacidad + "Kg";
-    console.log(v.placa);
     if (this.form.valid)
     {
       this.VehService.guardar(v).subscribe(success => {
-        console.log(success);
+        this.mensaje.openSnackBar('Vehiculo registrado');
         this.form.reset();
         this.router.navigate(['/camion']);
       }, err => {

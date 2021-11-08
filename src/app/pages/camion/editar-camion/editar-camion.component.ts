@@ -4,6 +4,7 @@ import { VehiculoService } from 'src/app/_service/vehiculo.service';
 import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.service';
 import { ActivatedRoute,Params,Router } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, FormBuilder, FormControl, Validator, Validators } from '@angular/forms';
+import { Mensajes } from 'src/app/_share/mensajes';
 @Component({
   selector: 'app-editar-camion',
   templateUrl: './editar-camion.component.html',
@@ -22,7 +23,7 @@ export class EditarCamionComponent implements OnInit {
 
   constructor(private VehService: VehiculoService, private formBuilder: FormBuilder, 
               public errorInterceptor: ErrorInterceptorService, private router: Router, 
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private mensaje : Mensajes) {
       this.buildForm();
     }
 
@@ -55,7 +56,7 @@ export class EditarCamionComponent implements OnInit {
     if (this.form.valid)
     {
       this.VehService.editar(v).subscribe(success => {
-        console.log("success");
+        this.mensaje.openSnackBar('Vehiculo Editado');
         this.router.navigate(['/camion']);
         this.form.reset();
       }, err => {
