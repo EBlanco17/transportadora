@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   timedOut = false;
   lastPing?: Date;
   title = 'angular-idle-timeout';
-  constructor(private barraProgreso: ProgressBarService, private loginService: LoginService,
+  constructor(private barraProgreso: ProgressBarService, public loginService: LoginService,
     private idle: Idle, private keepalive: Keepalive, private router: Router) {
     if (loginService.estaLogeado()) {
       idle.setIdle(15*60); //tiempo de inactividad en segundos

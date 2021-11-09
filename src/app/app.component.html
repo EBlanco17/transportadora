@@ -19,7 +19,7 @@
       <mat-divider></mat-divider>
     </ng-container>
     <!-- componentes rol administrador -->
-    <ng-container *ngIf="this.log">
+    <ng-container *ngIf="this.log && this.loginService.rol() == 'Administrador'">
 
       <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/departamento']"
         routerLinkActive="active">
@@ -43,7 +43,7 @@
       <mat-divider></mat-divider>
     </ng-container>
     <!-- componentes rol conductor -->
-    <ng-container *ngIf="this.log">
+    <ng-container *ngIf="this.log && this.loginService.rol() == 'Conductor' ">
       <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/usuario']"
         routerLinkActive="active">
         <mat-icon>perm_identity</mat-icon>

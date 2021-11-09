@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Injectable({
   providedIn: 'root'
 })
@@ -30,5 +30,15 @@ export class LoginService {
   public estaLogeado ():boolean{
     const tk = sessionStorage.getItem(environment.TOKEN);
     return tk != null;
+  }
+
+  public rol(): string{
+    
+    const helper = new JwtHelperService();
+    let token: any = sessionStorage.getItem(environment.TOKEN);
+    const decodedToken = helper.decodeToken(token);
+    const rol: string = decodedToken.authorities[0];
+
+    return rol;
   }
 }
