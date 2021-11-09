@@ -17,6 +17,6 @@ export class Usuario {
     };
     ciudad !: {
         idCiudad: number;
-    }
+    };
     
 }

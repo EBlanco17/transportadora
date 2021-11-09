@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     {
       this.loginService.login(this.form.value.user,this.form.value.password).subscribe(data =>{
         sessionStorage.setItem(environment.TOKEN,data.access_token);
-        this.router.navigate(['/departamento']).then(() => { window.location.reload(); });
+        this.router.navigate(['/perfil']).then(() => { window.location.reload(); });
       });
     }else{
       this.form.markAllAsTouched();
@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
   private buildForm(): void{
     this.form = this.formBuilder.group(
       {
-        user: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
-        password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]] 
+        user: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
+        password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(16)]] 
       });
 
   }

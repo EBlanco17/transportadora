@@ -1,21 +1,25 @@
 <form class="custom-form" [formGroup]="form" (ngSubmit)="iniciar($event)">
     <h1 class="center">Inicio de Sesión</h1>
-    <input matInput type="text" placeholder="Usuario" formControlName="user" maxlength="15" autocomplete="off">
-    <div *ngIf="form.get('user')?.errors && form.get('user')?.touched">
-        <p *ngIf="form.get('user')?.hasError('required')">
-            Es un campo requerido
-        </p>
-    </div>
-
-    <input matInput type="password" placeholder="Password" formControlName="password" maxlength="15" autocomplete="off">
-    <div *ngIf="form.get('user')?.errors && form.get('password')?.touched">
-        <p *ngIf="form.get('password')?.hasError('required')">
-            Es un campo requerido
-        </p>
-    </div>
-
+    <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Usuario" formControlName="user" maxlength="20" autocomplete="off">
+        <mat-error *ngIf="form.get('user')?.errors && form.get('user')?.touched">
+            <p *ngIf="form.get('user')?.hasError('required')">
+                Es un campo requerido
+            </p>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="Password" formControlName="password" maxlength="16"
+            autocomplete="off">
+        <mat-error *ngIf="form.get('user')?.errors && form.get('password')?.touched">
+            <p *ngIf="form.get('password')?.hasError('required')">
+                Es un campo requerido
+            </p>
+        </mat-error>
+    </mat-form-field>
     <button type="submit" mat-raised-button [disabled]="form.invalid">
-            <mat-icon>login</mat-icon><span>Ingresar</span>
+        <mat-icon>login</mat-icon><span>Ingresar</span>
     </button>
-    
+
 </form>

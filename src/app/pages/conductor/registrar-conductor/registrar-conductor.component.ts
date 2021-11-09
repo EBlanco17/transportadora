@@ -39,9 +39,16 @@ export class RegistrarConductorComponent implements OnInit {
     u.direccion = this.form.value.direccion;
     u.celular = this.form.value.celular;
     u.celularAux = this.form.value.celularAux;
-    u.tipoDocumento.idTipoDocumento = 1;
-    u.rol.idRol = 4;
-    u.ciudad.idCiudad = 1;
+    u.tipoDocumento = {
+      idTipoDocumento: 1
+    };
+    u.rol = {
+      idRol: 4
+    };
+    u.ciudad = {
+      idCiudad: 1
+    };
+
 
     if (this.form.valid)
     {
@@ -91,5 +98,15 @@ export class RegistrarConductorComponent implements OnInit {
       event.target.value = event.target.value.replace(/[^0-9]/g, "");
       // invalid character, prevent input
     }
+  }
+  public inputValidatorEmail(event: any){
+    //console.log(event.target.value);
+    const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;   
+    //let inputChar = String.fromCharCode(event.charCode)
+    if (!pattern.test(event.target.value)) {
+      event.target.value = event.target.value.replace(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/g, "");
+      // invalid character, prevent input
+    }
+
   }
 }
