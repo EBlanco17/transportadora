@@ -1,0 +1,39 @@
+body {
+    font-family: "bookman old style";
+  }
+  
+  :target {
+    color: lightyellow;
+    background: indianred;
+  }
+
+  h1 {
+    text-align: center;
+    color: rgb(20, 45, 114);
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: underline;
+}
+  
+ h3{
+     font-weight: 600;
+ }  
+  img {
+     
+    border: 3px dashed indianred;
+  }
+  
+  
+  .containerp {
+    background: rgba(180, 179, 179, 0.582);
+    text-align: center;
+    grid-gap: 20px;
+    padding: 2em;
+}
+
+.containerp>div {
+    text-align: justify;
+    position: relative;
+    padding: 1em 2em 0.5em 2em;
+    
+}

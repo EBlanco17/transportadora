@@ -25,7 +25,7 @@ export class GuardianService implements CanActivate {
 
         if (rol == "Administrador" && (url.includes('perfil') || url.includes('conductor') || url.includes('camion') || url.includes('departamento'))) {
           return true;
-        } else if (rol == "Conductor" && (url.includes('perfil') || url.includes('usuario') || url.includes('editar') || url.includes('pedido'))) {
+        } else if (rol == "Conductor" && (url.includes('perfil') || url.includes('usuario') || url.includes('ubicar') || url.includes('pedido'))) {
           return true;
         } else {
           this.loginService.closeSession();

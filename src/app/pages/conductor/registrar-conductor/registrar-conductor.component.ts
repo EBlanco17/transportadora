@@ -65,7 +65,7 @@ export class RegistrarConductorComponent implements OnInit {
         apellido: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20),Validators.pattern(/^[a-zA-Z]+$/)]],
         nick: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
         documento: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10),Validators.pattern(/^[0-9]+$/)]],
-        correo: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/)]],
+        correo: ['', [Validators.required, Validators.minLength(8), Validators.email]],
         clave: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
         direccion: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
         celular: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern(/^[0-9]+$/) ]],

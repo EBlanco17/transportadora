@@ -12,15 +12,15 @@
                 <mat-label>Placa</mat-label>
                 <input matInput [ngModel]="veh.placa" type="text" placeholder="Ej:abc-123" formControlName="placa"
                     maxlength="7">
+                <mat-error *ngIf="form.get('placa')?.errors && form.get('placa')?.touched">
+                    <p *ngIf="form.get('placa')?.hasError('maxlength') || form.get('placa')?.hasError('minlength')">
+                        Placa inválida. Ej: abc-123
+                    </p>
+                    <p *ngIf="form.get('placa')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
             </mat-form-field>
-            <div *ngIf="form.get('placa')?.errors && form.get('placa')?.touched">
-                <p *ngIf="form.get('placa')?.hasError('maxlength') || form.get('placa')?.hasError('minlength')">
-                    Placa inválida. Ej: abc-123
-                </p>
-                <p *ngIf="form.get('placa')?.hasError('required')">
-                    Es un campo requerido
-                </p>
-            </div>
             <br>
             <mat-form-field appearance="outline">
 
@@ -38,26 +38,26 @@
                     <mat-option value="Renault">RENAULT</mat-option>
                     <mat-option value="Toyota">TOYOTA</mat-option>
                 </mat-select>
+                <mat-error *ngIf="form.get('marca')?.errors && form.get('marca')?.touched">
+                    <p *ngIf="form.get('marca')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
             </mat-form-field>
-            <div *ngIf="form.get('marca')?.errors && form.get('marca')?.touched">
-                <p *ngIf="form.get('marca')?.hasError('required')">
-                    Es un campo requerido
-                </p>
-            </div>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>Modelo</mat-label>
                 <input matInput [ngModel]="veh.modelo" type="text" placeholder="Ej:2008" formControlName="modelo"
-                    maxlength="4">
+                (input)="inputValidatorNum($event)" maxlength="4">
+                <mat-error *ngIf="form.get('modelo')?.errors && form.get('modelo')?.touched">
+                    <p *ngIf="form.get('modelo')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                    <p *ngIf="form.get('modelo')?.hasError('min') || form.get('modelo')?.hasError('max')">
+                        Modelos entre 1970 y 2022
+                    </p>
+                </mat-error>
             </mat-form-field>
-            <div *ngIf="form.get('modelo')?.errors && form.get('modelo')?.touched">
-                <p *ngIf="form.get('modelo')?.hasError('required')">
-                    Es un campo requerido
-                </p>
-                <p *ngIf="form.get('modelo')?.hasError('min') || form.get('modelo')?.hasError('max')">
-                    Modelos entre 1970 y 2022
-                </p>
-            </div>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>Tipo de vehículo</mat-label>
@@ -67,23 +67,23 @@
                     <mat-option value="Carro">CARRO</mat-option>
                     <mat-option value="Furgon">FURGÓN</mat-option>
                 </mat-select>
+                <mat-error *ngIf="form.get('tipoVehiculo')?.errors && form.get('tipoVehiculo')?.touched">
+                    <p *ngIf="form.get('tipoVehiculo')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
             </mat-form-field>
-            <div *ngIf="form.get('tipoVehiculo')?.errors && form.get('tipoVehiculo')?.touched">
-                <p *ngIf="form.get('tipoVehiculo')?.hasError('required')">
-                    Es un campo requerido
-                </p>
-            </div>
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>Capacidad</mat-label>
                 <input matInput [ngModel]="veh.capacidad" type="text" placeholder="Ej:15000Kg"
                     formControlName="capacidad" maxlength="5">
+                <mat-error *ngIf="form.get('capacidad')?.errors && form.get('capacidad')?.touched">
+                    <p *ngIf="form.get('capacidad')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
             </mat-form-field>
-            <div *ngIf="form.get('capacidad')?.errors && form.get('capacidad')?.touched">
-                <p *ngIf="form.get('capacidad')?.hasError('required')">
-                    Es un campo requerido
-                </p>
-            </div>
 
             <div class="btn">
                 <button type="submit" mat-raised-button>

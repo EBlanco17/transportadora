@@ -21,7 +21,7 @@ import { EditarCamionComponent } from './pages/camion/editar-camion/editar-camio
 import { ErrorInterceptorService } from './_share/error-interceptor.service';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
-import { EditarComponent } from './pages/editar/editar.component';
+import { UbicarComponent } from './pages/ubicar/ubicar.component';
 import { DepartamentoComponent } from './pages/departamento/departamento.component';
 import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
 import { environment } from 'src/environments/environment';
@@ -40,7 +40,7 @@ export function tokenGetter() {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    EditarComponent,
+    UbicarComponent,
     PerfilComponent,
     PedidoComponent,
     ConductorComponent,

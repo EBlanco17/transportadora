@@ -6,7 +6,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { ConductorComponent } from './pages/conductor/conductor.component';
 import { CamionComponent } from './pages/camion/camion.component';
-import { EditarComponent } from './pages/editar/editar.component';
+import { UbicarComponent } from './pages/ubicar/ubicar.component';
 import { RegistrarCamionComponent } from './pages/camion/registrar-camion/registrar-camion.component';
 import { EditarCamionComponent } from './pages/camion/editar-camion/editar-camion.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   //Componentes usuario
   { path: 'usuario', component: UsuarioComponent, canActivate: [GuardianService] },
-  { path: 'editar', component: EditarComponent, canActivate: [GuardianService] },
+  { path: 'ubicar', component: UbicarComponent, canActivate: [GuardianService] },
   { path: 'pedido', component: PedidoComponent, canActivate: [GuardianService] },
   
   { path: 'error', component: NotOkComponent },

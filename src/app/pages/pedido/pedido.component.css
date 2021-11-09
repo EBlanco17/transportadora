@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+    color: rgb(20, 45, 114);
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: underline;
+}
+
+.containerp {
+    background: rgba(180, 179, 179, 0.582);
+    text-align: center;
+    grid-gap: 20px;
+    padding: 2em;
+}
+
+.containerp>div {
+    text-align: justify;
+    position: relative;
+    padding: 3em 1.5em 2em 1.5em;
+    background: rgba(0,0,0,0.1);
+}
+
+video {
+    width: 50%;
+    height: 350px;
+    display: block;
+    margin: auto;
+}
+
+img {
+    height: 450px;
+    width: 90%;
+    display: block;
+    margin: auto;
+    padding: 2em;
+}
+
+h2, h3 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgba(54, 77, 206, 0.884);
+}
+
+p {
+    color: black;
+    font-size: medium;
+}
