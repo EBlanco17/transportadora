@@ -12,6 +12,8 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
   }
   public cerrarSesion(): void {
-    this.loginService.closeSession();
+    if(confirm("Desea salir del aplicativo?")){
+      this.loginService.closeSession();
+    }
   }
 }

@@ -40,7 +40,7 @@
             <mat-form-field appearance="outline" style="width: 20%;">
                 <mat-label>Placa</mat-label>
                 <input #input matInput type="text" placeholder="ABC" formControlName="placa" maxlength="3"
-                    style="width: 175px;" (input)="inputValidator($event)" autocomplete="off">
+                    style="width: 175px;" (input)="inputValidator($event)" autocomplete="off" required>
                 <mat-hint align="end">{{input.value?.length || 0}}/3</mat-hint>
                 <mat-error *ngIf="form.get('placa')?.errors && form.get('placa')?.touched">
                     <p *ngIf="form.get('placa')?.hasError('maxlength') || form.get('placa')?.hasError('minlength')">
@@ -52,8 +52,9 @@
                 </mat-error>
             </mat-form-field>-
             <mat-form-field appearance="outline" style="width: 20%;">
+                <mat-label>Placa</mat-label>
                 <input #inputp matInput type="text" placeholder="123" formControlName="placa2" maxlength="3"
-                    style="width: 175px;" (input)="inputValidatorNum($event)" autocomplete="off">
+                    style="width: 175px;" (input)="inputValidatorNum($event)" autocomplete="off" required>
                 <mat-hint align="end">{{inputp.value?.length || 0}}/3</mat-hint>
                 <mat-error *ngIf="form.get('placa2')?.errors && form.get('placa2')?.touched">
                     <p *ngIf="form.get('placa2')?.hasError('maxlength') || form.get('placa2')?.hasError('minlength')">
@@ -67,7 +68,7 @@
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>Marca de vehículo</mat-label>
-                <mat-select [(value)]="selectedMarca" formControlName="marca">
+                <mat-select [(value)]="selectedMarca" formControlName="marca" required>
                     <mat-option value="Alfa Romero">ALFA ROMERO</mat-option>
                     <mat-option value="Audi">AUDI</mat-option>
                     <mat-option value="BMW">BMW</mat-option>
@@ -90,7 +91,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Modelo</mat-label>
                 <input #input2 matInput type="text" placeholder="YYYY" formControlName="modelo" maxlength="4"
-                    (input)="inputValidatorNum($event)" autocomplete="off">
+                    (input)="inputValidatorNum($event)" autocomplete="off" required>
                 <mat-hint align="end">{{input2.value?.length || 0}}/4</mat-hint>
                 <mat-error *ngIf="form.get('modelo')?.errors && form.get('modelo')?.touched">
                     <p *ngIf="form.get('modelo')?.hasError('required')">
@@ -104,7 +105,7 @@
             <br>
             <mat-form-field appearance="outline">
                 <mat-label>Tipo de vehículo</mat-label>
-                <mat-select [(value)]="selectedTipo" formControlName="tipoVehiculo">
+                <mat-select [(value)]="selectedTipo" formControlName="tipoVehiculo" required>
                     <mat-option value="Camioneta">CAMIONETA</mat-option>
                     <mat-option value="Campero">CAMPERO</mat-option>
                     <mat-option value="Carro">CARRO</mat-option>
@@ -120,7 +121,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Capacidad</mat-label>
                 <input matInput #input3 type="text" placeholder="15000 Kg" formControlName="capacidad" maxlength="5"
-                    (input)="inputValidatorNum($event)" autocomplete="off">
+                    (input)="inputValidatorNum($event)" autocomplete="off" required>
                 <mat-hint align="end">{{input3.value?.length || 0}}/5</mat-hint>
                 <mat-error *ngIf="form.get('capacidad')?.errors && form.get('capacidad')?.touched">
                     <p *ngIf="form.get('capacidad')?.hasError('required')">

@@ -1,7 +1,8 @@
 <form class="custom-form" [formGroup]="form" (ngSubmit)="iniciar($event)">
     <h1 class="center">Inicio de Sesión</h1>
     <mat-form-field appearance="outline">
-        <input matInput type="text" placeholder="Usuario" formControlName="user" maxlength="20" autocomplete="off">
+        <mat-label>Nick de Usuario</mat-label>
+        <input matInput type="text" placeholder="Usuario" formControlName="user" maxlength="20" autocomplete="off" required>
         <mat-error *ngIf="form.get('user')?.errors && form.get('user')?.touched">
             <p *ngIf="form.get('user')?.hasError('required')">
                 Es un campo requerido
@@ -10,9 +11,10 @@
     </mat-form-field>
     <br>
     <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
         <input matInput type="password" placeholder="Password" formControlName="password" maxlength="16"
-            autocomplete="off">
-        <mat-error *ngIf="form.get('user')?.errors && form.get('password')?.touched">
+            autocomplete="off" required>
+        <mat-error *ngIf="form.get('password')?.errors && form.get('password')?.touched">
             <p *ngIf="form.get('password')?.hasError('required')">
                 Es un campo requerido
             </p>

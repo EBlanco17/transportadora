@@ -50,6 +50,8 @@ export class AppComponent implements OnInit {
     this.log = this.loginService.estaLogeado();
   }
   public cerrarSesion(): void {
-    this.loginService.closeSession();
+    if(confirm("Desea salir del aplicativo?")){
+      this.loginService.closeSession();
+    }
   }
 }

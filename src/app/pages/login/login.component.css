@@ -70,7 +70,7 @@ p {
 }
 
 .custom-form input {
-    color: firebrick;
+    color: rgb(15, 73, 199);
     font-family: "Asap", sans-serif;
     display: block;
     border-radius: 5px;
