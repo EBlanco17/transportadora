@@ -51,7 +51,7 @@
                 <ng-container matColumnDef="editar">
                     <th mat-header-cell *matHeaderCellDef> Editar </th>
                     <td mat-cell *matCellDef="let row">
-                        <button mat-button color="primary">
+                        <button mat-button color="primary" [routerLink]="['/conductor/editar-conductor/',row.idUsuario]">
                             <mat-icon>edit</mat-icon>
                         </button>
                     </td>

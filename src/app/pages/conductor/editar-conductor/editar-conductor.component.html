@@ -1,1 +1,186 @@
-<p>editar-conductor works!</p>
+<div class="custom-form">
+    <div class="section1">
+        <button mat-fab color="accent" style="float: left; left: 150px; margin-top: 10px;"
+            [routerLink]="['/conductor']">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1>Edición de Usuario</h1>
+    </div>
+    <div class="section2">
+        <form [formGroup]="form" (ngSubmit)="editarUsuario($event)">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Nombres</mat-label>
+                <input matInput type="text" [ngModel]="conductor.nombre" placeholder="NOMBRE" formControlName="nombre"
+                    maxlength="20" (input)="inputValidator($event)" autocomplete="off" required>
+                <mat-error *ngIf="form.get('nombre')?.errors && form.get('nombre')?.touched">
+                    <p *ngIf="form.get('nombre')?.hasError('maxlength') || form.get('nombre')?.hasError('minlength')">
+                        Nombre inválido. Ej: Luis
+                    </p>
+                    <p *ngIf="form.get('nombre')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input matInput type="text" [ngModel]="conductor.apellido" placeholder="APELLIDO"
+                    formControlName="apellido" maxlength="20" (input)="inputValidator($event)" autocomplete="off"
+                    required>
+                <mat-error *ngIf="form.get('apellido')?.errors && form.get('apellido')?.touched">
+                    <p
+                        *ngIf="form.get('apellido')?.hasError('maxlength') || form.get('apellido')?.hasError('minlength')">
+                        Apellido inválido. Ej: Diaz
+                    </p>
+                    <p *ngIf="form.get('apellido')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Nick</mat-label>
+                <input matInput type="text" [ngModel]="conductor.nick" placeholder="NICK" formControlName="nick"
+                    maxlength="20" autocomplete="off" required>
+                <mat-error *ngIf="form.get('nick')?.errors && form.get('nick')?.touched">
+                    <p *ngIf="form.get('nick')?.hasError('maxlength') || form.get('nick')?.hasError('minlength')">
+                        Nick inválido. Ej: luis123
+                    </p>
+                    <p *ngIf="form.get('nick')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Documento</mat-label>
+                <input matInput type="text" [ngModel]="conductor.documento" placeholder="DOCUMENTO"
+                    formControlName="documento" maxlength="10" (input)="inputValidatorNum($event)" autocomplete="off"
+                    required>
+                <mat-error *ngIf="form.get('documento')?.errors && form.get('documento')?.touched">
+                    <p
+                        *ngIf="form.get('documento')?.hasError('maxlength') || form.get('documento')?.hasError('minlength')">
+                        Documento inválido. Ej: 123456789
+                    </p>
+                    <p *ngIf="form.get('documento')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input matInput type="email" [ngModel]="conductor.correo" placeholder="CORREO" formControlName="correo"
+                    autocomplete="off" required>
+                <mat-error *ngIf="form.get('correo')?.errors && form.get('correo')?.touched">
+                    <p *ngIf="form.get('correo')?.hasError('minlength')">
+                        Correo inválido. Ej: example123@example.com
+                    </p>
+                    <p *ngIf="form.get('correo')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Dirección</mat-label>
+                <input matInput type="text" [ngModel]="conductor.direccion" placeholder="DIRECCIÓN"
+                    formControlName="direccion" maxlength="20" autocomplete="off" required>
+                <mat-error *ngIf="form.get('direccion')?.errors && form.get('direccion')?.touched">
+                    <p
+                        *ngIf="form.get('direccion')?.hasError('maxlength') || form.get('direccion')?.hasError('minlength')">
+                        Dirección inválida. Ej: CLL14#6-10
+                    </p>
+                    <p *ngIf="form.get('direccion')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Celular</mat-label>
+                <input matInput type="text" [ngModel]="conductor.celular" placeholder="CELULAR"
+                    formControlName="celular" maxlength="10" (input)="inputValidatorNum($event)" autocomplete="off"
+                    required>
+                <mat-error *ngIf="form.get('celular')?.errors && form.get('celular')?.touched">
+                    <p *ngIf="form.get('celular')?.hasError('maxlength') || form.get('celular')?.hasError('minlength')">
+                        Celular inválido. Ej: 3007900101
+                    </p>
+                    <p *ngIf="form.get('celular')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Celular Auxiliar</mat-label>
+                <input matInput type="text" [ngModel]="conductor.celularAux" placeholder="CELULAR AUXILIAR"
+                    formControlName="celularAux" maxlength="10" (input)="inputValidatorNum($event)" autocomplete="off"
+                    required>
+                <mat-error *ngIf="form.get('celularAux')?.errors && form.get('celularAux')?.touched">
+                    <p
+                        *ngIf="form.get('celularAux')?.hasError('maxlength') || form.get('celularAux')?.hasError('minlength')">
+                        Celular inválido. Ej: 6018904356
+                    </p>
+                    <p *ngIf="form.get('celularAux')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Departamento</mat-label>
+                <mat-select [(ngModel)]="conductor.ciudad.departamento.nombre" (selectionChange)="listarCiudades($event.value.idDepartamento)"
+                    formControlName="departamento" placeholder="DEPARTAMENTO" required>
+                    <mat-option *ngFor="let depto of departamento" [value]="depto">
+                        {{depto.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('departamento')?.errors && form.get('departamento')?.touched">
+                    <p *ngIf="form.get('departamento')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Ciudad</mat-label>
+                <mat-select [(ngModel)]="conductor.ciudad.nombre" formControlName="ciudad" placeholder="CIUDAD" required>
+                    <mat-option *ngFor="let city of ciudades" [value]="city">
+                        {{city.nombre}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('ciudad')?.errors && form.get('ciudad')?.touched">
+                    <p *ngIf="form.get('ciudad')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="CLAVE" formControlName="clave" maxlength="16"
+                    autocomplete="off">
+                <mat-error *ngIf="form.get('clave')?.errors && form.get('clave')?.touched">
+                    <p *ngIf="form.get('clave')?.hasError('maxlength') || form.get('clave')?.hasError('minlength')">
+                        Clave inválida. Minímo 6 caracteres máximo 16
+                    </p>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="btn">
+                <button type="submit" mat-raised-button [disabled]="form.invalid">
+                    <mat-icon>save</mat-icon><span>Actualizar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

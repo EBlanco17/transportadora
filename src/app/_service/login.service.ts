@@ -27,6 +27,13 @@ export class LoginService {
       this.router.navigate(['/login']).then(() => { window.location.reload(); });
     });
   }
+
+  public closeSesion(){
+    const tk = sessionStorage.getItem(environment.TOKEN);
+    this.http.get(`${environment.HOST}/cerrarSesion/anular/${tk}`).subscribe(data =>{
+      sessionStorage.clear();
+    });
+  }
   public estaLogeado ():boolean{
     const tk = sessionStorage.getItem(environment.TOKEN);
     return tk != null;

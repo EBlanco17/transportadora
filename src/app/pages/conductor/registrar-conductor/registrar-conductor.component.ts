@@ -19,9 +19,7 @@ export class RegistrarConductorComponent implements OnInit {
   form!: FormGroup;
   departamento !: Departamento[];
   ciudades !: Ciudades[];
-  deptoSelected !: number;
-  citySelected !: number;
-
+  
   constructor(private userService: UsuarioService, private deptoService: DepartamentoService, private formBuilder: FormBuilder,
     public errorInterceptor: ErrorInterceptorService, private router: Router,
     private route: ActivatedRoute, private mensaje: Mensajes) {
@@ -62,7 +60,12 @@ export class RegistrarConductorComponent implements OnInit {
       idRol: 4
     };
     u.ciudad = {
-      idCiudad: this.citySelected
+      idCiudad: this.form.value.ciudad.idCiudad,
+      nombre : this.form.value.ciudad.nombre,
+      departamento : {
+        idDepartamento : this.form.value.departamento.idDepartamento,
+        nombre : this.form.value.departamento.nombre
+      }
     };
 
     if (this.form.valid) {

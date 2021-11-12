@@ -76,7 +76,7 @@ export class UsuarioService {
       );
     }
     public eliminar(id : number){
-      return this.http.delete(`${this.url}/eliminar`+ id).pipe(
+      return this.http.delete(`${this.url}/eliminar/`+ id).pipe(
         tap(() => {
           this._refresh$.next();
         })

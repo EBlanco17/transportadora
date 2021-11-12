@@ -4,6 +4,8 @@ import { ProgressBarService } from './_service/progress-bar.service';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 import { Keepalive } from '@ng-idle/keepalive';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import { InactividadDialogComponent } from './pages/inactividad-dialog/inactividad-dialog.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,28 +15,40 @@ export class AppComponent implements OnInit {
   public flagProgressBar: boolean = true;
   timedOut = false;
   lastPing?: Date;
-  title = 'angular-idle-timeout';
+  public flagDialog : boolean = true;
   constructor(private barraProgreso: ProgressBarService, public loginService: LoginService,
-    private idle: Idle, private keepalive: Keepalive, private router: Router) {
-    if (loginService.estaLogeado()) {
-      idle.setIdle(15*60); //tiempo de inactividad en segundos
-      idle.setTimeout(5); //tiempo añadido que tiene el usuario cuando se acabe el tiempo de inactividad
-      idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
+    private idle: Idle, private keepalive: Keepalive, private router: Router, public dialog: MatDialog) {
+    this.inactividad();
+  }
 
-      idle.onIdleEnd.subscribe(() => {
+  inactividad(){
+    if (this.loginService.estaLogeado()) {
+      this.idle.setIdle(15*60); //tiempo de inactividad en minutos
+      this.idle.setTimeout(5*60); //tiempo añadido que tiene el usuario cuando se acabe el tiempo de inactividad
+      this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
+
+      this.idle.onIdleEnd.subscribe(() => {
         this.reset();
       });
 
-      idle.onTimeout.subscribe(() => {
+      this.idle.onTimeout.subscribe(() => {
         this.timedOut = true;
-        loginService.closeSession();
+        this.loginService.closeSesion();
+        this.openDialog();
       });
 
-      keepalive.interval(15);
-      keepalive.onPing.subscribe(() => this.lastPing = new Date());
+      this.keepalive.interval(15);
+      this.keepalive.onPing.subscribe(() => this.lastPing = new Date());
       this.reset();
     }
   }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(InactividadDialogComponent, {
+     width: '30%'
+   });
+  }
+
   reset() {
     this.idle.watch();
     this.timedOut = false;

@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginService } from '../_service/login.service';
+import { Mensajes } from './mensajes';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { LoginService } from '../_service/login.service';
 export class GuardianService implements CanActivate {
 
   constructor(private loginService: LoginService,
-    private router: Router) { }
+    private router: Router, private mensaje : Mensajes) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if (this.loginService.estaLogeado()) {
 
@@ -28,15 +29,18 @@ export class GuardianService implements CanActivate {
         } else if (rol == "Conductor" && (url.includes('perfil') || url.includes('usuario') || url.includes('ubicar') || url.includes('pedido'))) {
           return true;
         } else {
-          this.loginService.closeSession();
+          this.mensaje.openSnackBar("No está autorizado para realizar está acción");
+          this.router.navigate(['unauthorized']);
           return false;
         }
       } else {
-        this.loginService.closeSession();
+        this.mensaje.openSnackBar("No está autorizado para realizar está acción");
+        this.router.navigate(['unauthorized']);
         return false;
       }
 
     } else {
+      this.mensaje.openSnackBar("No se encuentra logueado");
       this.router.navigate(['unauthorized']);
       return false;
     }

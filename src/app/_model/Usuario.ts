@@ -16,7 +16,12 @@ export class Usuario {
         idRol: number;
     };
     ciudad !: {
-        idCiudad: number;
+        idCiudad : number;
+        nombre : string;
+        departamento : {
+            idDepartamento : number;
+            nombre : string;
+        };
     };
     
 }

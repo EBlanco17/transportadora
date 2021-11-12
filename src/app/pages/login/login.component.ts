@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
   { this.buildForm();}
 
   ngOnInit(): void {
-    
+    if(this.loginService.estaLogeado()){
+      this.router.navigate(['/perfil']).then(() => { window.location.reload(); });
+    }
   }
   public iniciar(event: Event){
     event.preventDefault();

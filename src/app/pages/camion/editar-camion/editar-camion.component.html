@@ -89,8 +89,8 @@
             </mat-form-field>
 
             <div class="btn">
-                <button type="submit" mat-raised-button>
-                    <mat-icon>save</mat-icon><span>Guardar</span>
+                <button type="submit" mat-raised-button [disabled]="form.invalid">
+                    <mat-icon>save</mat-icon><span>Actualizar</span>
                 </button>
             </div>
         </form>

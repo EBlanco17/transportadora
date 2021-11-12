@@ -70,6 +70,7 @@ export class ConductorComponent implements OnInit, OnDestroy {
   }
 
   eliminarConductor(idUser: number): void {
-    this.usuarioService.eliminar(idUser);
+    console.log(idUser);
+    this.usuarioService.eliminar(idUser).subscribe();
   }
 }

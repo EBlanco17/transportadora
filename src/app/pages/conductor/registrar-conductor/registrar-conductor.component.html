@@ -146,8 +146,8 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Departamento</mat-label>
-                <mat-select [(value)]="deptoSelected" (selectionChange)="listarCiudades($event.value)" formControlName="departamento" placeholder="DEPARTAMENTO" required>
-                    <mat-option *ngFor="let depto of departamento" [value]="depto.idDepartamento">
+                <mat-select (selectionChange)="listarCiudades($event.value.idDepartamento)" formControlName="departamento" placeholder="DEPARTAMENTO" required>
+                    <mat-option *ngFor="let depto of departamento" [value]="depto">
                         {{depto.nombre}}
                     </mat-option>
                 </mat-select>
@@ -161,8 +161,8 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
-                <mat-select [(value)]="citySelected"  formControlName="ciudad" placeholder="CIUDAD" required>
-                    <mat-option *ngFor="let city of ciudades" [value]="city.idCiudad">
+                <mat-select formControlName="ciudad" placeholder="CIUDAD" required>
+                    <mat-option *ngFor="let city of ciudades" [value]="city">
                         {{city.nombre}}
                     </mat-option>
                 </mat-select>

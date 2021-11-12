@@ -29,6 +29,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
+import { InactividadDialogComponent } from './pages/inactividad-dialog/inactividad-dialog.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN);
@@ -55,7 +56,8 @@ export function tokenGetter() {
     NoPermitidoComponent,
     UsuarioComponent,
     RegistrarConductorComponent,
-    EditarConductorComponent
+    EditarConductorComponent,
+    InactividadDialogComponent
   ],
   imports: [
     BrowserModule,
