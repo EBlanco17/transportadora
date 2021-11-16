@@ -60,6 +60,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
         } else if (err.error.status == 415) {
           this.mensajes.openSnackBar(err.error.message);
         } else if (err.error.status == 500) {
+          this.mensajes.openSnackBar('Acceso Denegado');
           this.router.navigate(['error']);
         }
 

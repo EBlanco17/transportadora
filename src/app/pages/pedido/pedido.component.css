@@ -1,17 +1,31 @@
 h1 {
     text-align: center;
-    color: rgb(20, 45, 114);
+    color: rgb(253, 253, 253);
     font-size: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-decoration: underline;
 }
 
 .containerp {
-    background: rgba(180, 179, 179, 0.582);
+    background: radial-gradient(circle, rgba(251,183,63,0.9836309523809523) 0%, rgba(252,70,70,1) 100%);
+    background-size: 400% 400%;
+    animation:  gradient 15s ease infinite;
     text-align: center;
     grid-gap: 20px;
     padding: 2em;
 }
+
+@keyframes gradient{
+    0%{
+      background-position: 0% 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0% 50%;
+    }
+  }
 
 .containerp>div {
     text-align: justify;
@@ -37,10 +51,10 @@ img {
 
 h2, h3 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgba(54, 77, 206, 0.884);
+    color: rgb(14 59 110 / 88%);
 }
 
 p {
-    color: black;
+    color: rgb(252, 252, 252);
     font-size: medium;
 }

@@ -22,7 +22,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+
             <mat-form-field appearance="outline">
                 <mat-label>Apellidos</mat-label>
                 <input matInput type="text" placeholder="APELLIDO" formControlName="apellido" maxlength="20"
@@ -37,7 +37,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+
             <mat-form-field appearance="outline">
                 <mat-label>Nick</mat-label>
                 <input matInput type="text" placeholder="NICK" formControlName="nick" maxlength="20" autocomplete="off"
@@ -51,7 +51,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+
             <mat-form-field appearance="outline">
                 <mat-label>Documento</mat-label>
                 <input matInput type="text" placeholder="DOCUMENTO" formControlName="documento" maxlength="10"
@@ -66,7 +66,6 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
 
             <mat-form-field appearance="outline">
                 <mat-label>Correo</mat-label>
@@ -81,22 +80,6 @@
                 </mat-error>
             </mat-form-field>
 
-            <br>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput type="password" placeholder="CLAVE" formControlName="clave" maxlength="16"
-                    autocomplete="off" required>
-                <mat-error *ngIf="form.get('clave')?.errors && form.get('clave')?.touched">
-                    <p *ngIf="form.get('clave')?.hasError('maxlength') || form.get('clave')?.hasError('minlength')">
-                        Clave inválida. Minímo 6 caracteres máximo 16
-                    </p>
-                    <p *ngIf="form.get('clave')?.hasError('required')">
-                        Es un campo requerido
-                    </p>
-                </mat-error>
-            </mat-form-field>
-            <br>
             <mat-form-field appearance="outline">
                 <mat-label>Dirección</mat-label>
                 <input matInput type="text" placeholder="DIRECCIÓN" formControlName="direccion" maxlength="20"
@@ -111,7 +94,31 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="CLAVE" formControlName="clave" maxlength="16"
+                    autocomplete="off" required>
+                <mat-error *ngIf="form.get('clave')?.errors && form.get('clave')?.touched">
+                    <p *ngIf="form.get('clave')?.hasError('maxlength') || form.get('clave')?.hasError('minlength')">
+                        Clave inválida. Minímo 6 caracteres máximo 16
+                    </p>
+                    <p *ngIf="form.get('clave')?.hasError('required')">
+                        Es un campo requerido
+                    </p>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Confirmación Password</mat-label>
+                <input matInput type="password" placeholder="CLAVE" formControlName="claveConf" maxlength="16"
+                    autocomplete="off">
+                <mat-error *ngIf="form.get('claveConf')?.errors && form.get('claveConf')?.touched">
+                    <p *ngIf="form.get('clave') != form.get('claveConf')">
+                        Clave inválida. Las claves no son iguales
+                    </p>
+                </mat-error>
+            </mat-form-field> -->
 
             <mat-form-field appearance="outline">
                 <mat-label>Celular</mat-label>
@@ -126,7 +133,6 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
 
             <mat-form-field appearance="outline">
                 <mat-label>Celular Auxiliar</mat-label>
@@ -142,11 +148,11 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
 
             <mat-form-field appearance="outline">
                 <mat-label>Departamento</mat-label>
-                <mat-select (selectionChange)="listarCiudades($event.value.idDepartamento)" formControlName="departamento" placeholder="DEPARTAMENTO" required>
+                <mat-select (selectionChange)="listarCiudades($event.value.idDepartamento)"
+                    formControlName="departamento" placeholder="DEPARTAMENTO" required>
                     <mat-option *ngFor="let depto of departamento" [value]="depto">
                         {{depto.nombre}}
                     </mat-option>
@@ -157,7 +163,6 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
 
             <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>

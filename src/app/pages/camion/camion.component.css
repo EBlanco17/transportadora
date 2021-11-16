@@ -1,5 +1,6 @@
 table{
   width: 100%;
+  text-transform: uppercase;
 }
 
 .mat-header-cell{

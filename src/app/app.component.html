@@ -21,10 +21,10 @@
     <!-- componentes rol administrador -->
     <ng-container *ngIf="this.log && this.loginService.rol() == 'Administrador'">
 
-      <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/departamento']"
+      <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/ubicar']"
         routerLinkActive="active">
-        <mat-icon>share_location</mat-icon>
-        <span>Departamentos</span>
+        <mat-icon>location_city</mat-icon>
+        <span>Ubicar Sedes</span>
       </button>
       <mat-divider></mat-divider>
 
@@ -41,6 +41,7 @@
         <span>Conductores</span>
       </button>
       <mat-divider></mat-divider>
+      
     </ng-container>
     <!-- componentes rol conductor -->
     <ng-container *ngIf="this.log && this.loginService.rol() == 'Conductor' ">
@@ -56,13 +57,7 @@
         <span>Cargas</span>
       </button>
       <mat-divider></mat-divider>
-
-      <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/ubicar']"
-        routerLinkActive="active">
-        <mat-icon>location_city</mat-icon>
-        <span>Ubicar Sedes</span>
-      </button>
-      <mat-divider></mat-divider>
+   
     </ng-container>
   </mat-drawer>
   <mat-drawer-content>

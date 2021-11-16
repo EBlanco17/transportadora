@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class ConductorComponent implements OnInit, OnDestroy {
   dataSource!: UsuarioData;
-  displayedColumns: string[] = ['idUsuario', 'documento', 'nombre', 'apellido', 'nick', 'direccion', 'celular', 'correo', 'editar','eliminar'];
+  displayedColumns: string[] = ['idUsuario', 'documento', 'nombre', 'nick', 'celular', 'correo', 'ciudad', 'direccion', 'acciones'];
   ListaConductores = new MatTableDataSource<Usuario>([]);
   pageEvent!: PageEvent;
   pageSizeOptions!: number[];

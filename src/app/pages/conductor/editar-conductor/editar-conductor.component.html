@@ -22,7 +22,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+            
             <mat-form-field appearance="outline">
                 <mat-label>Apellidos</mat-label>
                 <input matInput type="text" [ngModel]="conductor.apellido" placeholder="APELLIDO"
@@ -38,7 +38,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+            
             <mat-form-field appearance="outline">
                 <mat-label>Nick</mat-label>
                 <input matInput type="text" [ngModel]="conductor.nick" placeholder="NICK" formControlName="nick"
@@ -52,7 +52,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+            
             <mat-form-field appearance="outline">
                 <mat-label>Documento</mat-label>
                 <input matInput type="text" [ngModel]="conductor.documento" placeholder="DOCUMENTO"
@@ -68,7 +68,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+            
 
             <mat-form-field appearance="outline">
                 <mat-label>Correo</mat-label>
@@ -84,7 +84,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <br>
+            
             <mat-form-field appearance="outline">
                 <mat-label>Dirección</mat-label>
                 <input matInput type="text" [ngModel]="conductor.direccion" placeholder="DIRECCIÓN"
@@ -99,7 +99,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+            
 
             <mat-form-field appearance="outline">
                 <mat-label>Celular</mat-label>
@@ -115,7 +115,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+            
 
             <mat-form-field appearance="outline">
                 <mat-label>Celular Auxiliar</mat-label>
@@ -132,8 +132,8 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
-
+            
+            {{conductor.ciudad.departamento.nombre}}
             <mat-form-field appearance="outline">
                 <mat-label>Departamento</mat-label>
                 <mat-select [(ngModel)]="conductor.ciudad.departamento.nombre" (selectionChange)="listarCiudades($event.value.idDepartamento)"
@@ -148,8 +148,8 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
-
+            
+            {{conductor.ciudad.nombre}}
             <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
                 <mat-select [(ngModel)]="conductor.ciudad.nombre" formControlName="ciudad" placeholder="CIUDAD" required>
@@ -163,7 +163,7 @@
                     </p>
                 </mat-error>
             </mat-form-field>
-            <br>
+            
 
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
@@ -175,6 +175,17 @@
                     </p>
                 </mat-error>
             </mat-form-field>
+
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Confirmación Password</mat-label>
+                <input matInput type="password" placeholder="CLAVE" formControlName="claveConf" maxlength="16"
+                    autocomplete="off">
+                <mat-error *ngIf="form.get('claveConf')?.errors && form.get('claveConf')?.touched">
+                    <p *ngIf="form.get('clave') != form.get('claveConf')">
+                        Clave inválida. Las claves no son iguales
+                    </p>
+                </mat-error>
+            </mat-form-field> -->
 
             <div class="btn">
                 <button type="submit" mat-raised-button [disabled]="form.invalid">

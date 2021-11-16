@@ -25,8 +25,11 @@
             </mat-paginator>
         </div>
         <div class="section3">
-            <button mat-fab color="accent" [routerLink]="['/departamento']">
-                <mat-icon>compare_arrows</mat-icon>
+            <button mat-fab color="accent" [routerLink]="['/departamento']" title="Ver tabla">
+                <mat-icon>table_view</mat-icon>
+            </button>
+            <button mat-fab color="warn" [routerLink]="['/ubicar']" title="Ver Mapa">
+                <mat-icon>explore</mat-icon>
             </button>
         </div>
     </div>

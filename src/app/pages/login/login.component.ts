@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.loginService.estaLogeado()){
-      this.router.navigate(['/perfil']).then(() => { window.location.reload(); });
+      this.redireccionar();
     }
   }
   public iniciar(event: Event){
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     {
       this.loginService.login(this.form.value.user,this.form.value.password).subscribe(data =>{
         sessionStorage.setItem(environment.TOKEN,data.access_token);
-        this.router.navigate(['/perfil']).then(() => { window.location.reload(); });
+        this.redireccionar();
       });
     }else{
       this.form.markAllAsTouched();
@@ -51,6 +51,15 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem(environment.TOKEN,data.access_token);
     });*/
   }
+
+  private redireccionar(){
+    if(this.loginService.rol() == "Administrador"){
+      this.router.navigate(['/ubicar']).then(() => { window.location.reload(); });
+    }else{
+      this.router.navigate(['/usuario']).then(() => { window.location.reload(); });
+    }
+  }
+
   private buildForm(): void{
     this.form = this.formBuilder.group(
       {

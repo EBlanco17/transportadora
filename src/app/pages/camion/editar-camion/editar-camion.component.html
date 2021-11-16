@@ -80,7 +80,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Capacidad</mat-label>
                 <input matInput [ngModel]="veh.capacidad" type="text" placeholder="Ej:15000Kg"
-                    formControlName="capacidad" maxlength="5" required>
+                    formControlName="capacidad" maxlength="7" required>
                 <mat-error *ngIf="form.get('capacidad')?.errors && form.get('capacidad')?.touched">
                     <p *ngIf="form.get('capacidad')?.hasError('required')">
                         Es un campo requerido

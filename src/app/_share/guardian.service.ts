@@ -24,9 +24,9 @@ export class GuardianService implements CanActivate {
         const rol: string = decodedToken.authorities[0];
         const url: string = state.url;
 
-        if (rol == "Administrador" && (url.includes('perfil') || url.includes('conductor') || url.includes('camion') || url.includes('departamento'))) {
+        if (rol == "Administrador" && (url.includes('perfil') || url.includes('conductor') || url.includes('camion') || url.includes('departamento') || url.includes('ubicar'))) {
           return true;
-        } else if (rol == "Conductor" && (url.includes('perfil') || url.includes('usuario') || url.includes('ubicar') || url.includes('pedido'))) {
+        } else if (rol == "Conductor" && (url.includes('perfil') || url.includes('usuario') || url.includes('pedido'))) {
           return true;
         } else {
           this.mensaje.openSnackBar("No está autorizado para realizar está acción");

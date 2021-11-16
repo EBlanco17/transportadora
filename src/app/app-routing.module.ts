@@ -44,9 +44,10 @@ const routes: Routes = [
       { path: 'ciudad/:idDep', component: CiudadComponent, canActivate: [GuardianService] }
     ], canActivate: [GuardianService]
   },
+  { path: 'ubicar', component: UbicarComponent, canActivate: [GuardianService]},
+  
   //Componentes usuario
   { path: 'usuario', component: UsuarioComponent, canActivate: [GuardianService] },
-  { path: 'ubicar', component: UbicarComponent, canActivate: [GuardianService] },
   { path: 'pedido', component: PedidoComponent, canActivate: [GuardianService] },
   
   { path: 'error', component: NotOkComponent },

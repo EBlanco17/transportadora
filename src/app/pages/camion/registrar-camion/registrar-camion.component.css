@@ -1,6 +1,6 @@
-h1{
+h1 {
     text-align: center;
-    color: rgb(20, 45, 114);
+    color: rgb(255, 255, 255);
     font-size: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-decoration: underline;
@@ -8,16 +8,32 @@ h1{
     padding-bottom: 0.5em;
 }
 
-p{
+p {
     color: darkred;
     float: inline-start;
 }
-.custom-form{
-    background:rgb(255, 255, 255);
+
+.custom-form {
+    background: linear-gradient(-45deg, #9342fd, #ff73ec, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
     text-align: center;
     padding: 1em;
     border: 3px;
+    color: #fff;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
     }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 .btn button {
     width: 20%;
@@ -37,8 +53,9 @@ p{
     transform: translateY(-3px);
     background: rgb(136, 97, 207);
 }
-mat-form-field{
+
+mat-form-field {
     width: 45%;
-    color: darkblue;
+    color: rgb(255, 255, 255);
     font-size: 16px;
 }

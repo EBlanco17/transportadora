@@ -21,3 +21,8 @@ input {
     padding: 10px 10px;
     margin: 15px -10px;
 }
+
+.boton{
+    left: 50%;
+    margin: 2.5em;
+}

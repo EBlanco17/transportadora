@@ -1,15 +1,6 @@
-body {
-    font-family: "bookman old style";
-  }
-  
-  :target {
-    color: lightyellow;
-    background: indianred;
-  }
-
-  h1 {
+ h1 {
     text-align: center;
-    color: rgb(20, 45, 114);
+    color: rgb(255, 255, 255);
     font-size: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-decoration: underline;
@@ -19,21 +10,26 @@ body {
      font-weight: 600;
  }  
   img {
-     
     border: 3px dashed indianred;
   }
   
-  
   .containerp {
-    background: rgba(180, 179, 179, 0.582);
+    background: linear-gradient(-45deg, #ee7725, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation:  gradient 15s ease infinite;
     text-align: center;
     grid-gap: 20px;
     padding: 2em;
 }
 
-.containerp>div {
-    text-align: justify;
-    position: relative;
-    padding: 1em 2em 0.5em 2em;
-    
+@keyframes gradient{
+  0%{
+    background-position: 0% 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
 }
