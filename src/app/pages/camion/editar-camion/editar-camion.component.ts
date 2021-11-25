@@ -37,7 +37,6 @@ export class EditarCamionComponent implements OnInit {
   cargarVehiculo(idVehiculo: number): void{
     this.VehService.listar(idVehiculo).subscribe(data => {
       this.veh = data;
-      console.log(this.veh.placa);
     });
   }
 
@@ -60,7 +59,7 @@ export class EditarCamionComponent implements OnInit {
         this.router.navigate(['/camion']);
         this.form.reset();
       }, err => {
-        console.log(err);
+        this.mensaje.openSnackBar('Error al editar vehiculo, intente mas tarde');
       });
     }else{
       this.form.markAllAsTouched();

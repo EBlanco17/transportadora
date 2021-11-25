@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Vehiculo} from '../_model/Vehiculo';
 import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 export interface VehiculoData {
   paginator: any;
@@ -34,7 +35,26 @@ export interface VehiculoData {
   number: number,
   empty: boolean
 }
-
+export interface Asociados{
+  idUsuario: number,
+  documento: any,
+  nombre: string,
+  apellido: string,
+  nick: any,
+  clave: any,
+  estado: any,
+  cambioContrasena: any,
+  nombreEmpresa: any,
+  direccion: any,
+  cargo: any,
+  telefono: any,
+  celular: any,
+  correo: any,
+  tipoDocumento: any,
+  rol: any,
+  ciudad: any,
+  vehicuo: any
+}
 
 @Injectable({
     providedIn: 'root'
@@ -43,9 +63,9 @@ export interface VehiculoData {
 export class VehiculoService{
 
   private url: string = `${environment.HOST}/vehiculos`;
-private _refresh$ = new Subject<void>();
+  private _refresh$ = new Subject<void>();
 
-get refresh$(){
+  get refresh$(){
   return this._refresh$;
 }
   constructor(private http: HttpClient){}
@@ -67,7 +87,7 @@ get refresh$(){
     params=params.append('page',String(page));
     params=params.append('size',String(size));
     return this.http.get(this.url+'/pageable',{params}).pipe(
-      map((v: any, VehiculoData)=>v),
+      map((v: any, VehiculoData )=>v),
       catchError(err=>throwError(err))
     );
   }
@@ -79,5 +99,24 @@ get refresh$(){
     );
   }
  
+
+  public desasociarconductor(idUsuario : number, idVehiculo : number){
+    
+    return this.http.post(`${this.url}/desasociarconductor/${idUsuario}/${idVehiculo}`, null).pipe(
+      tap(() => {
+        this._refresh$.next();
+      })
+    );
+
+  }
+  public asociarconductor(idUsuario : number, idVehiculo : number){
+    
+    return this.http.post(`${this.url}/asociarcondcutor/${idUsuario}/${idVehiculo}`, null).pipe(
+      tap(() => {
+        this._refresh$.next();
+      })
+    );
+
+  }
 }
 

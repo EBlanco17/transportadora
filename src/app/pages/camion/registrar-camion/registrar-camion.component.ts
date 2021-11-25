@@ -46,7 +46,7 @@ export class RegistrarCamionComponent implements OnInit {
         this.form.reset();
         this.router.navigate(['/camion']);
       }, err => {
-        console.log(err);
+        this.mensaje.openSnackBar('Error al registrar vehiculo, intente mas tarde');
       });
     }else{
       this.form.markAllAsTouched();

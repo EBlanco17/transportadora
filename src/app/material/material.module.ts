@@ -16,9 +16,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatGridListModule} from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [],
   imports: [
@@ -62,7 +62,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatRadioModule,
     MatSortModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
   ]})
 
     export class MaterialModule {}

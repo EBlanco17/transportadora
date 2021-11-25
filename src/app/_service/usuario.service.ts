@@ -94,13 +94,5 @@ export class UsuarioService {
       return this.http.get(`${this.url}/listarConductorNoVehiculo/`+ idVeh);
     } 
 
-    public desasociarconductor(idUsuario : number, idVehiculo : number){
-      let params = new HttpParams();
-      params=params.append('idUsuario',String(idUsuario));
-      params=params.append('idVehiculo',String(idVehiculo));
-      return this.http.post(this.url+'/desasociarconductor',{params});
-
-    }
-
-
+    
 }

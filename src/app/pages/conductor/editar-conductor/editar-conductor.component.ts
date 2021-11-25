@@ -46,7 +46,6 @@ export class EditarConductorComponent implements OnInit {
     });
     this.userService.listar(idUsuario).subscribe(data => {
       this.conductor = data;
-      console.log(this.conductor);
     });
   }
   editarUsuario(event: Event): void {
@@ -80,7 +79,6 @@ export class EditarConductorComponent implements OnInit {
     };
 
     if (this.form.valid) {
-      console.log(u);
       // this.userService.editar(u).subscribe(success => {
       //   this.mensaje.openSnackBar('Usuario Editado');
       //   this.form.reset();

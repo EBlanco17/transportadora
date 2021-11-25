@@ -30,6 +30,8 @@ import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
 import { InactividadDialogComponent } from './pages/inactividad-dialog/inactividad-dialog.component';
+import { VerUsersComponent } from './pages/camion/ver-users/ver-users.component';
+import { AsociarConductorComponent } from './pages/camion/asociar-conductor/asociar-conductor.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN);
@@ -57,7 +59,9 @@ export function tokenGetter() {
     UsuarioComponent,
     RegistrarConductorComponent,
     EditarConductorComponent,
-    InactividadDialogComponent
+    InactividadDialogComponent,
+    VerUsersComponent,
+    AsociarConductorComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,9 @@ export function tokenGetter() {
       useClass: ErrorInterceptorService,
       multi: true
     }
+  ],
+  entryComponents: [
+    VerUsersComponent
   ],
   bootstrap: [AppComponent]
 })

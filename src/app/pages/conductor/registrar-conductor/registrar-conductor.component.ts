@@ -33,7 +33,6 @@ export class RegistrarConductorComponent implements OnInit {
   }
 
   listarCiudades(value: any) {
-    console.log(value);
     this.deptoService.listarCiudades(value).subscribe((data: Ciudades[]) => {
       this.ciudades = data;
     });
@@ -74,7 +73,7 @@ export class RegistrarConductorComponent implements OnInit {
         this.form.reset();
         this.router.navigate(['/conductor']);
       }, err => {
-        console.log(err);
+        this.mensaje.openSnackBar('Error al crear conductor, intente mas tarde');
       });
     } else {
       this.form.markAllAsTouched();
