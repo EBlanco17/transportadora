@@ -30,6 +30,9 @@ import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { NoPermitidoComponent } from './pages/no-permitido/no-permitido.component';
 import { InactividadDialogComponent } from './pages/inactividad-dialog/inactividad-dialog.component';
+import { VerUsersComponent } from './pages/camion/ver-users/ver-users.component';
+import { AsociarConductorComponent } from './pages/camion/asociar-conductor/asociar-conductor.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN);
@@ -57,7 +60,9 @@ export function tokenGetter() {
     UsuarioComponent,
     RegistrarConductorComponent,
     EditarConductorComponent,
-    InactividadDialogComponent
+    InactividadDialogComponent,
+    VerUsersComponent,
+    AsociarConductorComponent
   ],
   imports: [
     BrowserModule,
@@ -71,8 +76,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["159.223.107.103:8080"],
-        disallowedRoutes: ["http://159.223.107.103:8080/movitapp-backend/oauth/token"],
+        allowedDomains: ["159.223.107.103:8080"], //se cambia para la url de produccion
+        disallowedRoutes: ["http://159.223.107.103:8080/movitapp-backend/oauth/token"],//se cambia para la url de produccion
       },
     }),
 
@@ -82,7 +87,14 @@ export function tokenGetter() {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptorService,
       multi: true
+    },
+    {
+      provide: LocationStrategy, 
+      useClass: HashLocationStrategy
     }
+  ],
+  entryComponents: [
+    VerUsersComponent
   ],
   bootstrap: [AppComponent]
 })

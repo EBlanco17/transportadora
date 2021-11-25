@@ -1,0 +1,58 @@
+
+<h1><b>Conductores acociados a:</b></h1><br>
+<table  class="tablaCarro" style="width: 70%; float: unset;">
+    <tr>
+        <th>No.</th>
+        <th>Placa</th>
+        <th>Marca</th>
+        <th>Tipo de vehículo</th>
+        <th>Capacidad</th>
+    </tr>
+    <tr>
+        <td>{{data.idVehiculo}}</td>
+        <td>{{data.placa}}</td>
+        <td>{{data.marca}}</td>
+        <td>{{data.tipoVehiuclo}}</td>                
+        <td>{{data.capacidad}}</td>
+    </tr>
+</table>
+<br>
+<div class="section3">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+        <ng-container matColumnDef="idUsuario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+            <td mat-cell *matCellDef="let row"> {{row.idUsuario}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido</th>
+            <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let row"> {{row.apellido}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef> Quitar vinculo </th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-button color="primary" (click)="desasociar(row.idUsuario,data.idVehiculo)">
+                    <mat-icon>delete_forever</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+<br>
+<div style="align-items: center;">
+    <button mat-button style="float: left;" (click)="onNoClick()">Cerrar</button>
+    <button mat-button style="float: unset;" (click)="onNoClick()" [routerLink]="['/camion/asociar-conductor/',data.idVehiculo]" >
+        <mat-icon>group_add</mat-icon>
+        Agregar
+    </button>
+    
+</div>

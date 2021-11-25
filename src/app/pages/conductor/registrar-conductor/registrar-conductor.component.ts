@@ -8,14 +8,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, FormBuilder, FormControl, Validator, Validators } from '@angular/forms';
 import { Mensajes } from 'src/app/_share/mensajes';
 import { DepartamentoService } from 'src/app/_service/departamento.service';
-
 @Component({
   selector: 'app-registrar-conductor',
   templateUrl: './registrar-conductor.component.html',
   styleUrls: ['./registrar-conductor.component.css']
 })
 export class RegistrarConductorComponent implements OnInit {
-
   form!: FormGroup;
   departamento !: Departamento[];
   ciudades !: Ciudades[];
@@ -25,7 +23,6 @@ export class RegistrarConductorComponent implements OnInit {
     private route: ActivatedRoute, private mensaje: Mensajes) {
     this.buildForm();
   }
-
   ngOnInit(): void {
     this.deptoService.listar().subscribe((data: Departamento[]) => {
       this.departamento = data;
@@ -33,17 +30,13 @@ export class RegistrarConductorComponent implements OnInit {
   }
 
   listarCiudades(value: any) {
-    console.log(value);
     this.deptoService.listarCiudades(value).subscribe((data: Ciudades[]) => {
       this.ciudades = data;
     });
   }
-
   nuevoUsuario(event: Event): void {
     event.preventDefault();
-
     const u: Usuario = new Usuario();
-
     u.nombre = this.form.value.nombre;
     u.apellido = this.form.value.apellido;
     u.nick = this.form.value.nick;
@@ -67,20 +60,18 @@ export class RegistrarConductorComponent implements OnInit {
         nombre : this.form.value.departamento.nombre
       }
     };
-
     if (this.form.valid) {
       this.userService.guardar(u).subscribe(success => {
         this.mensaje.openSnackBar('Usuario creado');
         this.form.reset();
         this.router.navigate(['/conductor']);
       }, err => {
-        //this.mensaje.openSnackBar('Error al crear usuario');
+        this.mensaje.openSnackBar('Error al crear conductor, intente mas tarde');
       });
     } else {
       this.form.markAllAsTouched();
     }
   }
-
   private buildForm(): void {
     this.form = this.formBuilder.group(
       {
@@ -98,7 +89,6 @@ export class RegistrarConductorComponent implements OnInit {
         ciudad: ['', [Validators.required]],
       });
   }
-
   public inputValidator(event: any) {
     //console.log(event.target.value);
     const pattern = /^[a-zA-Z]*$/;

@@ -82,14 +82,13 @@ export class EditarConductorComponent implements OnInit {
     };
     
     if (this.form.valid) {
-      console.log(u);
-      // this.userService.editar(u).subscribe(success => {
-      //   this.mensaje.openSnackBar('Usuario Editado');
-      //   this.form.reset();
-      //   this.router.navigate(['/conductor']);
-      // }, err => {
-      //   this.mensaje.openSnackBar('Error, No se actualizo');
-      // });
+      this.userService.editar(u).subscribe(success => {
+        this.mensaje.openSnackBar('Usuario Editado');
+        this.form.reset();
+        this.router.navigate(['/conductor']);
+      }, err => {
+        this.mensaje.openSnackBar('Error, No se actualizo');
+      });
     } else {
       this.form.markAllAsTouched();
     }

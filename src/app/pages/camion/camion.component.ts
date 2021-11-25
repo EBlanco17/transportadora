@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 import { Subscription } from 'rxjs';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { VerUsersComponent } from './ver-users/ver-users.component';
 
 @Component({
   selector: 'app-camion',
@@ -17,7 +19,7 @@ import { Subscription } from 'rxjs';
 export class CamionComponent implements OnInit, OnDestroy{
 
   dataSource!: VehiculoData;
-  displayedColumns: string[] = ['idVehiculo', 'placa', 'modelo', 'marca', 'tipoVehiuclo', 'capacidad', 'editar'];
+  displayedColumns: string[] = ['idVehiculo', 'placa', 'modelo', 'marca', 'tipoVehiuclo', 'capacidad', 'editar','conductores'];
   ListaVehiculos = new MatTableDataSource<Vehiculo>([]);
   pageEvent!: PageEvent;
   pageSizeOptions!: number[];
@@ -25,8 +27,17 @@ export class CamionComponent implements OnInit, OnDestroy{
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
-  constructor(private vehiculoService: VehiculoService, public route: ActivatedRoute,
-    private barraProgreso: ProgressBarService) { }
+
+  idCarro!: number;
+  placa!: string;
+
+
+  constructor(
+    private vehiculoService: VehiculoService, 
+    public route: ActivatedRoute,
+    private barraProgreso: ProgressBarService, 
+    public dialog: MatDialog
+    ) { }
 
   ngOnInit() {
     this.getVehiculos();
@@ -37,14 +48,13 @@ export class CamionComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(){
     this.susbcription.unsubscribe();
-    console.log("observable cerrado");
   }
 
   getVehiculos(): void {
     this.barraProgreso.progressBarReactiva.next(false);
     //await new Promise(f => setTimeout(f, 5000));
     this.vehiculoService.listarPaginado(0, 5).pipe(
-      tap(vehiculo => console.log(vehiculo)),
+      //tap(vehiculo => console.log(vehiculo)),
       map((v: VehiculoData) => this.dataSource = v)
     ).subscribe(data => {
       this.dataSource.paginator = this.paginator;
@@ -72,9 +82,21 @@ export class CamionComponent implements OnInit, OnDestroy{
       this.ListaVehiculos = new MatTableDataSource(data.content);
       this.ListaVehiculos.sort = this.sort;
     });
-    console.log(page);
   }
 
+  openDialog(num: number,placa:string,marca:string,tipoVeh:string,capacidad:string): void {
+    let vehiculo = new Vehiculo();
+    vehiculo.idVehiculo=num;
+    vehiculo.placa=placa;
+    vehiculo.marca=marca;
+    vehiculo.tipoVehiuclo=tipoVeh;
+    vehiculo.capacidad=capacidad;
+    const dialogRef = this.dialog.open(VerUsersComponent, {
+      width: '1000px',
+      //data: {idCarro: this.idCarro, placa: this.placa}
+      data: vehiculo
+    });
+  }
 }
 /*
 @ViewChild(MatSort) sort: MatSort;

@@ -19,6 +19,7 @@ import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { GuardianService } from './_share/guardian.service';
 import { RegistrarConductorComponent } from './pages/conductor/registrar-conductor/registrar-conductor.component';
 import { EditarConductorComponent } from './pages/conductor/editar-conductor/editar-conductor.component';
+import { AsociarConductorComponent } from './pages/camion/asociar-conductor/asociar-conductor.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
   {
     path: 'camion', component: CamionComponent, children: [
       { path: 'registrar-camion', component: RegistrarCamionComponent, canActivate: [GuardianService] },
-      { path: 'editar-camion/:idCamion', component: EditarCamionComponent, canActivate: [GuardianService] }
+      { path: 'editar-camion/:idCamion', component: EditarCamionComponent, canActivate: [GuardianService] },
+      { path: 'asociar-conductor/:idCamion', component: AsociarConductorComponent, canActivate: [GuardianService] }
     ], canActivate: [GuardianService]
   },
   {

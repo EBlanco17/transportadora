@@ -35,13 +35,12 @@ export class ConductorComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.susbcription.unsubscribe();
-    console.log("observable cerrado");
   }
   getConductores(): void {
     this.barraProgreso.progressBarReactiva.next(false);
     //await new Promise(f => setTimeout(f, 5000));
     this.usuarioService.listarPaginado(0, 5).pipe(
-      tap(vehiculo => console.log(vehiculo)),
+      //tap(vehiculo => console.log(vehiculo)),
       map((u: UsuarioData) => this.dataSource = u)
     ).subscribe(data => {
       this.dataSource.paginator = this.paginator;
@@ -70,7 +69,8 @@ export class ConductorComponent implements OnInit, OnDestroy {
   }
 
   eliminarConductor(idUser: number): void {
-    console.log(idUser);
+    if(confirm("Desea eliminar el usuario?")){
     this.usuarioService.eliminar(idUser).subscribe();
+    }
   }
 }

@@ -28,7 +28,7 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons #DepartmentPaginator>
+            <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons>
             </mat-paginator>
         </div>
         <button class="boton" mat-fab color="warn" [routerLink]="['/ubicar']" title="Ver Mapa">
