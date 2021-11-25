@@ -20,7 +20,7 @@ export class EditarConductorComponent implements OnInit {
   departamento !: Departamento[];
   ciudades !: Ciudades[];
   conductor : any;
-
+  
   constructor(private userService: UsuarioService, private deptoService: DepartamentoService, private formBuilder: FormBuilder,
     public errorInterceptor: ErrorInterceptorService, private router: Router,
     private route: ActivatedRoute, private mensaje: Mensajes) {
@@ -28,12 +28,18 @@ export class EditarConductorComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.listarDepartamentos();
       this.route.params.subscribe((params: Params) => {
       let idUsuario = params.idConductor;
       this.cargarConductor(idUsuario);
     });
   }
 
+  listarDepartamentos(){
+    this.deptoService.listar().subscribe((data: Departamento[]) => {
+      this.departamento = data;
+    });
+  }
   listarCiudades(value: any) {
       this.deptoService.listarCiudades(value).subscribe((data: Ciudades[]) => {
       this.ciudades = data;
@@ -41,12 +47,8 @@ export class EditarConductorComponent implements OnInit {
   }
 
   cargarConductor(idUsuario: number): void{
-      this.deptoService.listar().subscribe((data: Departamento[]) => {
-      this.departamento = data;
-    });
-    this.userService.listar(idUsuario).subscribe(data => {
+  this.userService.listar(idUsuario).subscribe(data => {
       this.conductor = data;
-      console.log(this.conductor);
     });
   }
   editarUsuario(event: Event): void {
@@ -71,14 +73,14 @@ export class EditarConductorComponent implements OnInit {
       idRol: 4
     };
     u.ciudad = {
-      idCiudad: this.form.value.ciudad.idCiudad,
-      nombre : this.form.value.ciudad.nombre,
+      idCiudad: this.form.value.ciudad,
+      nombre : '',
       departamento : {
-        idDepartamento : this.form.value.departamento.idDepartamento,
-        nombre : this.form.value.departamento.nombre
+        idDepartamento : this.form.value.departamento,
+        nombre : ''
       }
     };
-
+    
     if (this.form.valid) {
       console.log(u);
       // this.userService.editar(u).subscribe(success => {
@@ -86,7 +88,7 @@ export class EditarConductorComponent implements OnInit {
       //   this.form.reset();
       //   this.router.navigate(['/conductor']);
       // }, err => {
-      //   console.log(err);
+      //   this.mensaje.openSnackBar('Error, No se actualizo');
       // });
     } else {
       this.form.markAllAsTouched();

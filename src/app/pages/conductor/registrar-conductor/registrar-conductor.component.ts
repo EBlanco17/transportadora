@@ -74,7 +74,7 @@ export class RegistrarConductorComponent implements OnInit {
         this.form.reset();
         this.router.navigate(['/conductor']);
       }, err => {
-        console.log(err);
+        //this.mensaje.openSnackBar('Error al crear usuario');
       });
     } else {
       this.form.markAllAsTouched();

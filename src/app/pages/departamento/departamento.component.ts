@@ -13,7 +13,7 @@ import { DepartamentoService } from 'src/app/_service/departamento.service';
 })
 export class DepartamentoComponent implements OnInit {
   
-  displayedColumns: string[] = ['codigo', 'nombre', 'ver'];
+  displayedColumns: string[] = ['idDepartamento', 'nombre', 'ver'];
   dataSource = new MatTableDataSource<Departamento>();
 
   @ViewChild("DepartmentPaginator") paginator!: MatPaginator;

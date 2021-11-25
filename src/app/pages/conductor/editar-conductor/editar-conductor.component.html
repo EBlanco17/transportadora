@@ -133,12 +133,12 @@
                 </mat-error>
             </mat-form-field>
             
-            {{conductor.ciudad.departamento.nombre}}
+            
             <mat-form-field appearance="outline">
                 <mat-label>Departamento</mat-label>
-                <mat-select [(ngModel)]="conductor.ciudad.departamento.nombre" (selectionChange)="listarCiudades($event.value.idDepartamento)"
+                <mat-select [(ngModel)]="conductor.ciudad.departamento.idDepartamento" (selectionChange)="listarCiudades($event.value)"
                     formControlName="departamento" placeholder="DEPARTAMENTO" required>
-                    <mat-option *ngFor="let depto of departamento" [value]="depto">
+                    <mat-option *ngFor="let depto of departamento" [value]="depto.idDepartamento">
                         {{depto.nombre}}
                     </mat-option>
                 </mat-select>
@@ -149,11 +149,11 @@
                 </mat-error>
             </mat-form-field>
             
-            {{conductor.ciudad.nombre}}
+            
             <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
-                <mat-select [(ngModel)]="conductor.ciudad.nombre" formControlName="ciudad" placeholder="CIUDAD" required>
-                    <mat-option *ngFor="let city of ciudades" [value]="city">
+                <mat-select [(ngModel)]="conductor.ciudad.idCiudad" formControlName="ciudad" placeholder="CIUDAD" required>
+                    <mat-option *ngFor="let city of ciudades" [value]="city.idCiudad">
                         {{city.nombre}}
                     </mat-option>
                 </mat-select>
@@ -188,7 +188,7 @@
             </mat-form-field> -->
 
             <div class="btn">
-                <button type="submit" mat-raised-button [disabled]="form.invalid">
+                <button type="submit" mat-raised-button >
                     <mat-icon>save</mat-icon><span>Actualizar</span>
                 </button>
             </div>

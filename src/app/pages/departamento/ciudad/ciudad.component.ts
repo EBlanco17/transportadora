@@ -13,7 +13,7 @@ import { DepartamentoService } from 'src/app/_service/departamento.service';
 })
 export class CiudadComponent implements OnInit {
 
-  displayedCityColumns: string[] = ['codigo', 'nombre'];
+  displayedCityColumns: string[] = ['idCiudad', 'nombre'];
   dataSourceCiudad = new MatTableDataSource<Ciudades>();
 
   @ViewChild("cityPaginator") citiyPaginator!: MatPaginator;

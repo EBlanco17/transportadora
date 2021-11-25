@@ -7,9 +7,9 @@
         <div class="section2">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
-                <ng-container matColumnDef="codigo">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Código. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.idDepartamento}} </td>
+                <ng-container matColumnDef="idDepartamento">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
+                    <td mat-cell *matCellDef="let element"><mat-icon></mat-icon> {{element.idDepartamento}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="nombre">
