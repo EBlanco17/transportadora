@@ -11,7 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     z-index: 10;
 }
 .mat-dialog-container{
-    background-color: orangered;
+    background-color: rgba(25, 152, 236, 0.842);
     color: #fff;
     text-align: center;
     align-items: center;

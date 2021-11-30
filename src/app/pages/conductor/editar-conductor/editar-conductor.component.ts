@@ -28,10 +28,10 @@ export class EditarConductorComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.listarDepartamentos();
       this.route.params.subscribe((params: Params) => {
       let idUsuario = params.idConductor;
       this.cargarConductor(idUsuario);
+      this.listarDepartamentos();
     });
   }
 
@@ -49,8 +49,10 @@ export class EditarConductorComponent implements OnInit {
   cargarConductor(idUsuario: number): void{
   this.userService.listar(idUsuario).subscribe(data => {
       this.conductor = data;
+      this.listarCiudades(this.conductor.ciudad.departamento.idDepartamento);
     });
   }
+
   editarUsuario(event: Event): void {
     event.preventDefault();
 

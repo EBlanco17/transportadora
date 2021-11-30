@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   inactividad(){
     if (this.loginService.estaLogeado()) {
-      this.idle.setIdle(15*60); //tiempo de inactividad en minutos
+      this.idle.setIdle(10*60); //tiempo de inactividad en minutos
       this.idle.setTimeout(5*60); //tiempo añadido que tiene el usuario cuando se acabe el tiempo de inactividad
       this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 

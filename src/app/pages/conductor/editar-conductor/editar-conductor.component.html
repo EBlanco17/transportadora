@@ -138,7 +138,7 @@
                 <mat-label>Departamento</mat-label>
                 <mat-select [(ngModel)]="conductor.ciudad.departamento.idDepartamento" (selectionChange)="listarCiudades($event.value)"
                     formControlName="departamento" placeholder="DEPARTAMENTO" required>
-                    <mat-option *ngFor="let depto of departamento" [value]="depto.idDepartamento">
+                    <mat-option *ngFor="let depto of this.departamento" [value]="depto.idDepartamento">
                         {{depto.nombre}}
                     </mat-option>
                 </mat-select>
@@ -153,7 +153,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Ciudad</mat-label>
                 <mat-select [(ngModel)]="conductor.ciudad.idCiudad" formControlName="ciudad" placeholder="CIUDAD" required>
-                    <mat-option *ngFor="let city of ciudades" [value]="city.idCiudad">
+                    <mat-option *ngFor="let city of this.ciudades" [value]="city.idCiudad">
                         {{city.nombre}}
                     </mat-option>
                 </mat-select>
